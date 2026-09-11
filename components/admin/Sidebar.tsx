@@ -30,11 +30,11 @@ const navItems = [
   { label: "Media Library", href: "/dashboard/media", icon: ImageIcon },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-200 min-h-screen flex flex-col border-r border-slate-800">
+    <aside className="w-full h-full bg-slate-900 text-slate-200 flex flex-col border-r border-slate-800">
       {/* Brand Header */}
       <div className="p-4 border-b border-slate-800 flex items-center space-x-3">
         <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-0.5 flex-shrink-0">
@@ -69,6 +69,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => onNavigate?.()}
               className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
                 isActive
                   ? "bg-brand-red text-white shadow-sm"
@@ -87,6 +88,7 @@ export default function AdminSidebar() {
         <Link
           href="/"
           target="_blank"
+          onClick={() => onNavigate?.()}
           className="flex items-center space-x-2 px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800 transition"
         >
           <ExternalLink className="w-4 h-4 text-emerald-400" />
@@ -104,3 +106,4 @@ export default function AdminSidebar() {
     </aside>
   );
 }
+

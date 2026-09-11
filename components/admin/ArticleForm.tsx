@@ -77,7 +77,7 @@ export default function ArticleForm({ initialData }: { initialData?: ArticleData
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 max-w-5xl">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
         <Link
           href="/dashboard/articles"
           className="inline-flex items-center space-x-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition"
@@ -86,7 +86,7 @@ export default function ArticleForm({ initialData }: { initialData?: ArticleData
           <span>Back to Articles</span>
         </Link>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
           <label className="flex items-center space-x-2 text-xs font-bold text-slate-700 cursor-pointer bg-slate-100 px-3 py-2 rounded-lg">
             <input
               type="checkbox"
@@ -107,6 +107,7 @@ export default function ArticleForm({ initialData }: { initialData?: ArticleData
           </button>
         </div>
       </div>
+
 
       {error && (
         <div className="flex items-center space-x-2 bg-red-50 text-brand-red p-3 rounded-lg text-xs font-medium border border-red-200">

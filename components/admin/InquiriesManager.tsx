@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { changeInquiryStatusAction } from "@/app/actions/inquiryStatus";
 import { formatDate } from "@/lib/utils";
-import { Mail, Phone, Clock, CheckCircle2, ChevronRight, MessageSquare, Loader2 } from "lucide-react";
+import { Mail, Phone, Clock, CheckCircle2, ChevronRight, MessageSquare, Loader2, ArrowLeft } from "lucide-react";
 
 interface Inquiry {
   id: string;
@@ -24,6 +24,7 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
   const [selectedInquiry, setSelectedInquiry] = useState<Inquiry | null>(
     initialInquiries[0] || null
   );
+  const [mobileView, setMobileView] = useState<"list" | "detail">("list");
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   const filtered = initialInquiries.filter((inq) => {
@@ -47,7 +48,9 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
   return (
     <div className="space-y-6">
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3">
+      <div className={`flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3 ${
+        mobileView === "detail" ? "hidden lg:flex" : "flex"
+      }`}>
         {["ALL", "NEW", "CONTACTED", "QUALIFIED", "ARCHIVED"].map((tab) => (
           <button
             key={tab}
@@ -66,7 +69,9 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
       {/* Two-Column: List + Detail Pane */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left: List */}
-        <div className="lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden divide-y divide-slate-100">
+        <div className={`lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden divide-y divide-slate-100 ${
+          mobileView === "detail" ? "hidden lg:block" : "block"
+        }`}>
           {filtered.length === 0 ? (
             <div className="p-8 text-center text-xs text-slate-400">
               No inquiries found in this category.
@@ -77,7 +82,10 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
               return (
                 <div
                   key={inq.id}
-                  onClick={() => setSelectedInquiry(inq)}
+                  onClick={() => {
+                    setSelectedInquiry(inq);
+                    setMobileView("detail");
+                  }}
                   className={`p-4 cursor-pointer transition flex items-center justify-between ${
                     isSelected ? "bg-slate-50 border-l-4 border-brand-red" : "hover:bg-slate-50/50"
                   }`}
@@ -116,9 +124,21 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
         </div>
 
         {/* Right: Detailed View */}
-        <div className="lg:col-span-6">
+        <div className={`lg:col-span-6 ${mobileView === "list" ? "hidden lg:block" : "block"}`}>
           {selectedInquiry ? (
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 sticky top-24">
+            <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 shadow-sm space-y-6 lg:sticky lg:top-24">
+              {/* Mobile Back to List Button */}
+              <div className="lg:hidden">
+                <button
+                  type="button"
+                  onClick={() => setMobileView("list")}
+                  className="inline-flex items-center space-x-2 text-xs font-bold text-brand-navy hover:text-brand-red bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Back to Inquiries List</span>
+                </button>
+              </div>
+
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-4">
                 <div>
                   <h2 className="text-lg font-black text-slate-900">{selectedInquiry.name}</h2>

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { saveServiceAction, deleteServiceAction } from "@/app/actions/services";
 import { slugify } from "@/lib/utils";
-import { Plus, Edit2, Trash2, ExternalLink, Check, X, Loader2, AlertCircle } from "lucide-react";
+import { Plus, Edit2, Trash2, ExternalLink, Check, X, Loader2, AlertCircle, Briefcase } from "lucide-react";
 
 interface Service {
   id: string;
@@ -110,17 +110,22 @@ export default function ServicesManager({ initialServices }: { initialServices: 
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
         <div>
-          <h1 className="text-xl sm:text-2xl font-black text-brand-navy">Consultancy Services</h1>
-          <p className="text-xs text-slate-500">
+          <div className="flex items-center space-x-2">
+            <span className="p-2 bg-red-50 text-brand-red rounded-lg">
+              <Briefcase className="w-5 h-5" />
+            </span>
+            <h1 className="text-xl font-black text-brand-navy">Consultancy Services</h1>
+          </div>
+          <p className="text-xs text-slate-500 mt-1">
             Create, edit, or remove study destinations, visa offerings, and test prep tracks.
           </p>
         </div>
 
         <button
           onClick={openNewModal}
-          className="inline-flex items-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
+          className="inline-flex items-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition shrink-0"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Service</span>
@@ -213,8 +218,9 @@ export default function ServicesManager({ initialServices }: { initialServices: 
 
       {/* Modal Dialog */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative my-8">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-7 space-y-5 shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto">
+
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h2 className="text-base font-bold text-brand-navy">
                 {editingItem ? "Edit Service" : "Add New Consulting Service"}

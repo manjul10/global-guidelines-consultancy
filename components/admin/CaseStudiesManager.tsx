@@ -250,8 +250,10 @@ export default function CaseStudiesManager({ initialCaseStudies }: { initialCase
 
       {/* Modal Dialog */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-6 shadow-2xl border border-slate-100 my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-6 space-y-5 shadow-2xl border border-slate-100 my-auto max-h-[90vh] overflow-y-auto">
+
+
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h2 className="text-lg font-black text-brand-navy">
                 {editingItem ? "Edit Visa Success Story" : "Add New Visa Success Story"}

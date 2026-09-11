@@ -58,52 +58,52 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Metrics Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold uppercase tracking-wider text-[10px]">Student Inquiries</span>
-            <Inbox className="w-4 h-4 text-brand-red" />
+            <span className="font-semibold uppercase tracking-wider text-[9px] sm:text-[10px]">Student Inquiries</span>
+            <Inbox className="w-4 h-4 text-brand-red shrink-0" />
           </div>
-          <div className="text-3xl font-black text-slate-900">{stats.total}</div>
-          <div className="text-[11px] font-medium text-emerald-600 flex items-center space-x-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{stats.newCount} New Leads pending review</span>
+          <div className="text-2xl sm:text-3xl font-black text-slate-900">{stats.total}</div>
+          <div className="text-[10px] sm:text-[11px] font-medium text-emerald-600 flex items-center space-x-1">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="truncate">{stats.newCount} New Leads pending</span>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold uppercase tracking-wider text-[10px]">Published Articles</span>
-            <FileText className="w-4 h-4 text-brand-navy" />
+            <span className="font-semibold uppercase tracking-wider text-[9px] sm:text-[10px]">Published Articles</span>
+            <FileText className="w-4 h-4 text-brand-navy shrink-0" />
           </div>
-          <div className="text-3xl font-black text-slate-900">{totalArticles}</div>
-          <div className="text-[11px] text-slate-500">Live on /insights</div>
+          <div className="text-2xl sm:text-3xl font-black text-slate-900">{totalArticles}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Live on /insights</div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold uppercase tracking-wider text-[10px]">Active Services</span>
-            <Briefcase className="w-4 h-4 text-emerald-600" />
+            <span className="font-semibold uppercase tracking-wider text-[9px] sm:text-[10px]">Active Services</span>
+            <Briefcase className="w-4 h-4 text-emerald-600 shrink-0" />
           </div>
-          <div className="text-3xl font-black text-slate-900">{totalServices}</div>
-          <div className="text-[11px] text-slate-500">Admissions & Visa tracks</div>
+          <div className="text-2xl sm:text-3xl font-black text-slate-900">{totalServices}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Admissions & Visa tracks</div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold uppercase tracking-wider text-[10px]">Visa Case Studies</span>
-            <Trophy className="w-4 h-4 text-amber-500" />
+            <span className="font-semibold uppercase tracking-wider text-[9px] sm:text-[10px]">Visa Case Studies</span>
+            <Trophy className="w-4 h-4 text-amber-500 shrink-0" />
           </div>
-          <div className="text-3xl font-black text-slate-900">{totalCaseStudies}</div>
-          <div className="text-[11px] text-slate-500">Verified success stories</div>
+          <div className="text-2xl sm:text-3xl font-black text-slate-900">{totalCaseStudies}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Verified success stories</div>
         </div>
       </div>
 
       {/* Two-Column Tables */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
         {/* Recent Inquiries */}
         <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
             <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
               <Inbox className="w-4 h-4 text-brand-red" />
               <span>Recent Counseling Inquiries</span>
@@ -122,7 +122,7 @@ export default async function AdminDashboardPage() {
               <div className="p-6 text-center text-xs text-slate-400">No student inquiries received yet.</div>
             ) : (
               recentInquiries.map((inq) => (
-                <div key={inq.id} className="p-4 hover:bg-slate-50 transition flex items-center justify-between gap-4">
+                <div key={inq.id} className="p-3.5 sm:p-4 hover:bg-slate-50 transition flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center space-x-2">
                       <span className="text-xs font-bold text-slate-900">{inq.name}</span>
@@ -138,8 +138,8 @@ export default async function AdminDashboardPage() {
                     </div>
                   </div>
 
-                  <div className="text-right flex-shrink-0">
-                    <span className="text-[10px] text-slate-400 block">{formatDate(inq.createdAt)}</span>
+                  <div className="flex items-center justify-between sm:justify-end sm:text-right gap-3 flex-shrink-0 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                    <span className="text-[10px] text-slate-400">{formatDate(inq.createdAt)}</span>
                     <Link
                       href="/dashboard/inquiries"
                       className="text-[11px] font-bold text-brand-navy hover:underline"
