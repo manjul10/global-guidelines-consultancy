@@ -16,6 +16,8 @@ import {
   Star,
   Users,
   Calendar,
+  Instagram,
+  Facebook,
 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
@@ -47,8 +49,9 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-semibold text-emerald-300">
                 <ShieldCheck className="w-4 h-4 text-brand-red" />
-                <span>Authorized Abroad Education & Visa Services</span>
+                <span>MOEST Approval No. 1459 • Reg. No. 168812/73/074</span>
               </div>
+
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
                 Your Bridge to <br />
@@ -483,8 +486,158 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 6. SOCIAL HIGHLIGHTS & VISA CELEBRATIONS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+          <div>
+            <div className="flex items-center space-x-2">
+              <span className="text-brand-red font-bold text-xs uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full">
+                Real Community & Success
+              </span>
+              <span className="text-xs text-slate-500 font-semibold">• 1.6K+ Facebook community</span>
+            </div>
+            <h2 className="text-3xl font-black text-brand-navy tracking-tight mt-2">
+              Life at Global Guidelines & Visa Celebrations
+            </h2>
+            <p className="text-xs text-slate-600 mt-1 max-w-xl">
+              From visa grants and CAS approvals to classroom test prep and pre-departure briefings.
+              Direct moments shared from our Putalisadak &amp; Birgunj centers.
+            </p>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <a
+              href="https://www.instagram.com/globalguidelines/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 via-red-500 to-amber-500 text-white font-bold text-xs shadow hover:opacity-90 transition"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>Follow on Instagram</span>
+            </a>
+            <a
+              href="https://www.facebook.com/globalguidelinesnepal"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow transition"
+            >
+              <Facebook className="w-4 h-4" />
+              <span>Facebook Page</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Gallery Grid of Scraped Photos */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-4.jpg"
+              alt="Visa grant celebration at Global Guidelines"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">Visa Grant Moments</span>
+              <span className="text-[10px] text-slate-300">@globalguidelines</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-6.jpg"
+              alt="Student counseling at Putalisadak"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">Counseling & Guidance</span>
+              <span className="text-[10px] text-slate-300">Putalisadak Head Office</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-8.jpg"
+              alt="Global Study destinations briefing"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">Abroad Study Briefing</span>
+              <span className="text-[10px] text-slate-300">UK, USA, Australia, Europe</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-10.jpg"
+              alt="PTE & Language Class Sessions"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">PTE & Test Prep Lab</span>
+              <span className="text-[10px] text-slate-300">Computer Mock Lab</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-12.jpg"
+              alt="Student visa stamp celebration"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">CAS & Visa Success</span>
+              <span className="text-[10px] text-slate-300">Verified Stamp</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/instagram-photo-15.jpg"
+              alt="Pre-departure preparation"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">Orientation Session</span>
+              <span className="text-[10px] text-slate-300">Pre-Departure Guidance</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/facebook-photo-2.jpg"
+              alt="Global Guidelines Putalisadak center"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">Global Guidelines Team</span>
+              <span className="text-[10px] text-slate-300">Level-3 Brihaspati Sadan</span>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/social/facebook-photo-14.jpg"
+              alt="Counselor consultation"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+              <span className="text-[11px] font-bold">1-on-1 Counseling</span>
+              <span className="text-[10px] text-slate-300">Advising & Support</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. CONVERSION BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div className="bg-gradient-to-r from-brand-navy-950 via-brand-navy-900 to-slate-900 text-white rounded-3xl p-10 sm:p-16 relative overflow-hidden shadow-2xl border border-white/10">
           <div className="relative z-10 max-w-2xl space-y-6">
             <span className="inline-block bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">

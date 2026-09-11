@@ -33,10 +33,16 @@ export default function PublicFooter() {
               university admissions, and visa guidance. Empowering aspiring students to achieve
               world-class global qualifications.
             </p>
-            <div className="flex items-center space-x-2 text-xs text-emerald-400">
-              <CheckCircle className="w-4 h-4" />
-              <span>Government Registered & Certified Advisors</span>
+            <div className="space-y-1 text-xs text-emerald-400">
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                <span className="font-semibold">MOEST Approval No. 1459</span>
+              </div>
+              <div className="text-[11px] text-slate-400 pl-6">
+                Reg. No. 168812/73/074 (Government of Nepal)
+              </div>
             </div>
+
           </div>
 
           {/* Column 2: Popular Study Destinations */}
@@ -139,8 +145,9 @@ export default function PublicFooter() {
               </div>
               <div className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-red flex-shrink-0" />
-                <span>+977 1 4525327 / 4423890 / 9801234567</span>
+                <span>+977 1 4525327 / 4423890 / 970-2709933</span>
               </div>
+
               <div className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-brand-red flex-shrink-0" />
                 <span>info@globalguidelines.com</span>

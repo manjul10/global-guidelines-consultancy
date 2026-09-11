@@ -167,6 +167,28 @@ async function main() {
 
   // 4. Seed Case Studies (Success Stories)
   await prisma.caseStudy.upsert({
+    where: { slug: "ms-aakriti-regmi-uk-student-journey-visa-success" },
+    update: {},
+    create: {
+      title: "Ms. Aakriti Regmi - UK Student Journey & Successful Visa Grant",
+      slug: "ms-aakriti-regmi-uk-student-journey-visa-success",
+      clientName: "Ms. Aakriti Regmi",
+      industry: "UK Student Route (Tier 4) Visa",
+      challenge:
+        "Selecting the right accredited UK university, organizing sponsor financial affidavits, and preparing for CAS interviews on an expedited schedule.",
+      solution:
+        "Global Guidelines Putalisadak provided complete course evaluation, conducted 1-on-1 interview practice drills, and fast-tracked university admission paperwork.",
+      results: JSON.stringify([
+        { metric: "100%", label: "Visa Grant Success" },
+        { metric: "10 Days", label: "CAS & Visa Turnaround" },
+        { metric: "Top UK Uni", label: "Direct Admission" },
+      ]),
+      coverImage: "/social/instagram-photo-4.jpg",
+      published: true,
+    },
+  });
+
+  await prisma.caseStudy.upsert({
     where: { slug: "mr-jaykishan-kumar-yadav-uk-student-visa-grant" },
     update: {},
     create: {
@@ -183,7 +205,7 @@ async function main() {
         { metric: "12 Days", label: "Priority Decision Turnaround" },
         { metric: "Zero Refusals", label: "Airtight CAS Compliance" },
       ]),
-      coverImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+      coverImage: "/social/instagram-photo-12.jpg",
       published: true,
     },
   });
@@ -205,7 +227,7 @@ async function main() {
         { metric: "1st Attempt", label: "F-1 Visa Grant" },
         { metric: "5 Rounds", label: "Simulated Interview Drills" },
       ]),
-      coverImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+      coverImage: "/social/instagram-photo-8.jpg",
       published: true,
     },
   });
@@ -227,7 +249,7 @@ async function main() {
         { metric: "100%", label: "GS Documentation Compliance" },
         { metric: "25%", label: "International Student Bursary" },
       ]),
-      coverImage: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
+      coverImage: "/social/instagram-photo-6.jpg",
       published: true,
     },
   });
@@ -236,6 +258,15 @@ async function main() {
   await prisma.testimonial.deleteMany({});
   await prisma.testimonial.createMany({
     data: [
+      {
+        clientName: "Aakriti Regmi",
+        clientRole: "UK Student Route Visa Recipient",
+        companyName: "UK University Graduate Route",
+        quote:
+          "Throwback to planning my UK journey with Global Guidelines Consultancy in Putalisadak! From planning to achieving my goals, their team guided me every step with complete transparency and care.",
+        rating: 5,
+        featured: true,
+      },
       {
         clientName: "Jaykishan Kumar Yadav",
         clientRole: "UK Student Visa Recipient",
@@ -263,15 +294,6 @@ async function main() {
         rating: 5,
         featured: true,
       },
-      {
-        clientName: "Priyanka Adhikari",
-        clientRole: "BS in Nursing Student",
-        companyName: "Texas A&M University",
-        quote:
-          "The visa interview mock sessions at Global Guidelines gave me the exact confidence I needed in front of the US visa officer. I received my F-1 approval without a single hesitation!",
-        rating: 5,
-        featured: true,
-      },
     ],
   });
 
@@ -283,28 +305,33 @@ async function main() {
         name: "Manjul Gautam",
         role: "Managing Director & Senior Education Advisor",
         bio: "Over 12 years of excellence leading Global Guidelines Putalisadak, counseling thousands of students toward Tier 4 UK, USA F-1, and Australia study permits.",
+        avatarUrl: "/social/instagram-photo-1.jpg",
         displayOrder: 1,
       },
       {
         name: "Sita Sharma",
         role: "Head of Visa Documentation & Compliance",
         bio: "Specialist in Genuine Student (GS) compliance, financial auditing, and embassy interview coaching with a 99% visa success track record.",
+        avatarUrl: "/social/instagram-photo-2.jpg",
         displayOrder: 2,
       },
       {
         name: "Manoj Jha",
         role: "Branch Director - Birgunj",
         bio: "Directs counseling operations and regional outreach at Global Guidelines Birgunj branch, helping Tarai students access premier global universities.",
+        avatarUrl: "/social/instagram-photo-3.jpg",
         displayOrder: 3,
       },
       {
         name: "Aayushma KC",
         role: "Lead IELTS & PTE Master Trainer",
         bio: "Certified English language instructor helping students achieve 7.5+ in IELTS and 75+ in PTE Academic through modern computerized mock drills.",
+        avatarUrl: "/social/facebook-photo-10.jpg",
         displayOrder: 4,
       },
     ],
   });
+
 
 
   // 7. Seed Downloadable Resource

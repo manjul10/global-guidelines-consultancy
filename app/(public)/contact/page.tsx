@@ -58,10 +58,11 @@ export default function ContactPage() {
                 <div className="flex items-start space-x-3">
                   <Phone className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-bold">Telephone & Support:</strong>
-                    <span>+977 1 4525327 / +977 1 4423890 / +977 9801234567</span>
+                    <strong className="block text-slate-900 font-bold">Telephone & Mobile Hotline:</strong>
+                    <span>+977 1 4525327 / +977 1 4423890 / 970-2709933</span>
                   </div>
                 </div>
+
 
                 <div className="flex items-start space-x-3">
                   <Mail className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />

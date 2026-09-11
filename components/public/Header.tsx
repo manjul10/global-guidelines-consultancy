@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { Phone, Mail, Clock, Menu, X, ArrowRight } from "lucide-react";
 
 const links = [
-  { label: "Home", href: "/" },
   { label: "Services & Visas", href: "/services" },
   { label: "Success Stories", href: "/case-studies" },
   { label: "Insights & News", href: "/insights" },
@@ -15,6 +14,7 @@ const links = [
   { label: "Our Team", href: "/team" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 export default function PublicHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -28,8 +28,9 @@ export default function PublicHeader() {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-1.5">
               <Phone className="w-3.5 h-3.5 text-brand-red" />
-              <span>+977 1 4525327 / 4423890 / 9801234567</span>
+              <span>+977 1 4525327 / 970-2709933</span>
             </div>
+
             <div className="hidden sm:flex items-center space-x-1.5">
               <Mail className="w-3.5 h-3.5 text-brand-red" />
               <span>info@globalguidelines.com</span>
