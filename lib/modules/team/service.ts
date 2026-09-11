@@ -33,9 +33,28 @@ export async function createTeamMember(data: TeamMemberInput) {
   return member;
 }
 
+export async function updateTeamMember(id: string, data: Partial<TeamMemberInput>) {
+  const updated = await prisma.teamMember.update({
+    where: { id },
+    data: {
+      name: data.name,
+      role: data.role,
+      bio: data.bio,
+      avatarUrl: data.avatarUrl,
+      linkedinUrl: data.linkedinUrl,
+      displayOrder: data.displayOrder,
+    },
+  });
+
+  revalidatePath("/team");
+  revalidatePath("/");
+  return updated;
+}
+
 export async function deleteTeamMember(id: string) {
   const deleted = await prisma.teamMember.delete({ where: { id } });
   revalidatePath("/team");
   revalidatePath("/");
   return deleted;
 }
+

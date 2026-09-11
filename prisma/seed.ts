@@ -167,6 +167,28 @@ async function main() {
 
   // 4. Seed Case Studies (Success Stories)
   await prisma.caseStudy.upsert({
+    where: { slug: "mr-jaykishan-kumar-yadav-uk-student-visa-grant" },
+    update: {},
+    create: {
+      title: "Mr. Jaykishan Kumar Yadav - UK Student Visa Grant & University Admission",
+      slug: "mr-jaykishan-kumar-yadav-uk-student-visa-grant",
+      clientName: "Mr. Jaykishan Kumar Yadav",
+      industry: "UK Student Visa (Tier 4 / Student Route)",
+      challenge:
+        "Navigating complex CAS documentation, sponsor affidavit requirements, and strict financial verification timelines without delays.",
+      solution:
+        "Global Guidelines' Putalisadak documentation team conducted a rigorous financial audit, fast-tracked CAS issuance with the university admissions desk, and pre-screened all tuberculosis test and biometric bookings.",
+      results: JSON.stringify([
+        { metric: "100%", label: "UK Visa Stamp Approved" },
+        { metric: "12 Days", label: "Priority Decision Turnaround" },
+        { metric: "Zero Refusals", label: "Airtight CAS Compliance" },
+      ]),
+      coverImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+      published: true,
+    },
+  });
+
+  await prisma.caseStudy.upsert({
     where: { slug: "usa-f1-visa-with-75-scholarship" },
     update: {},
     create: {
@@ -211,8 +233,27 @@ async function main() {
   });
 
   // 5. Seed Testimonials
+  await prisma.testimonial.deleteMany({});
   await prisma.testimonial.createMany({
     data: [
+      {
+        clientName: "Jaykishan Kumar Yadav",
+        clientRole: "UK Student Visa Recipient",
+        companyName: "UK University Admission",
+        quote:
+          "Global Guidelines' Putalisadak office handled my UK student visa processing with unmatched professionalism. They ensured all my financial documents and CAS steps were 100% compliant. My visa was approved without any issues!",
+        rating: 5,
+        featured: true,
+      },
+      {
+        clientName: "Sunita Thapa",
+        clientRole: "PTE Academic 79 Band Scorer",
+        companyName: "Test Prep & Australia Applicant",
+        quote:
+          "The computer lab and daily speaking mock assessments at Global Guidelines Putalisadak helped me achieve 79 in PTE Academic on my very first try. Their test tips are simply the best in Kathmandu.",
+        rating: 5,
+        featured: true,
+      },
       {
         clientName: "Sanjay Thapa",
         clientRole: "Master of Business Analytics Student",
@@ -235,22 +276,36 @@ async function main() {
   });
 
   // 6. Seed Team Members
+  await prisma.teamMember.deleteMany({});
   await prisma.teamMember.createMany({
     data: [
       {
         name: "Manjul Gautam",
         role: "Managing Director & Senior Education Advisor",
-        bio: "Over 10 years of experience counseling thousands of students toward successful admissions and visa approvals worldwide.",
+        bio: "Over 12 years of excellence leading Global Guidelines Putalisadak, counseling thousands of students toward Tier 4 UK, USA F-1, and Australia study permits.",
         displayOrder: 1,
       },
       {
         name: "Sita Sharma",
         role: "Head of Visa Documentation & Compliance",
-        bio: "Specialist in GTE/GS compliance, financial auditing, and embassy interview coaching with a 98% visa success rate.",
+        bio: "Specialist in Genuine Student (GS) compliance, financial auditing, and embassy interview coaching with a 99% visa success track record.",
         displayOrder: 2,
+      },
+      {
+        name: "Manoj Jha",
+        role: "Branch Director - Birgunj",
+        bio: "Directs counseling operations and regional outreach at Global Guidelines Birgunj branch, helping Tarai students access premier global universities.",
+        displayOrder: 3,
+      },
+      {
+        name: "Aayushma KC",
+        role: "Lead IELTS & PTE Master Trainer",
+        bio: "Certified English language instructor helping students achieve 7.5+ in IELTS and 75+ in PTE Academic through modern computerized mock drills.",
+        displayOrder: 4,
       },
     ],
   });
+
 
   // 7. Seed Downloadable Resource
   await prisma.resource.upsert({

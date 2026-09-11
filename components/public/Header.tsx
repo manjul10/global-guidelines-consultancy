@@ -28,7 +28,7 @@ export default function PublicHeader() {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-1.5">
               <Phone className="w-3.5 h-3.5 text-brand-red" />
-              <span>+977 1 4423890 / +977 9801234567</span>
+              <span>+977 1 4525327 / 4423890 / 9801234567</span>
             </div>
             <div className="hidden sm:flex items-center space-x-1.5">
               <Mail className="w-3.5 h-3.5 text-brand-red" />
@@ -36,22 +36,38 @@ export default function PublicHeader() {
             </div>
             <div className="hidden md:flex items-center space-x-1.5">
               <Clock className="w-3.5 h-3.5 text-brand-red" />
-              <span>Sun - Fri: 9:30 AM - 5:30 PM</span>
+              <span>Sun - Fri: 9:00 AM - 5:00 PM</span>
             </div>
           </div>
           <div className="flex items-center space-x-3 text-[11px]">
-            <span className="hidden lg:inline-block text-emerald-400 font-medium">
-              ✓ Authorized Study Abroad Partner
-            </span>
+            <a
+              href="https://www.facebook.com/globalguidelinesnepal"
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-400 hover:text-white transition"
+            >
+              FB
+            </a>
+            <span className="text-slate-600">•</span>
+            <a
+              href="https://www.instagram.com/globalguidelines/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-400 hover:text-white transition"
+            >
+              IG
+            </a>
+            <span className="text-slate-600">•</span>
             <Link
               href="/login"
-              className="text-slate-400 hover:text-white transition px-2 py-0.5 rounded bg-brand-navy-800/80 hover:bg-brand-navy-700"
+              className="text-slate-400 hover:text-white transition px-2 py-0.5 rounded bg-brand-navy-800/80 hover:bg-brand-navy-700 font-medium"
             >
-              CMS Staff Portal
+              CMS Portal
             </Link>
           </div>
         </div>
       </div>
+
 
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

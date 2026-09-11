@@ -117,38 +117,68 @@ export default function PublicFooter() {
             </ul>
           </div>
 
-          {/* Column 4: Head Office */}
+          {/* Column 4: Head Office & Branches */}
           <div>
             <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Head Office
+              Our Offices & Contact
             </h3>
             <div className="space-y-3 text-xs text-slate-400">
               <div className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
-                <span>Putalisadak / New Baneshwor, Kathmandu, Nepal</span>
+                <div>
+                  <strong className="text-white block">Kathmandu Head Office:</strong>
+                  <span>Level-3, Brihaspati Sadan, Putalisadak (near Laxmi Plaza), Kathmandu, Nepal</span>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2.5">
+                <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-white block">Birgunj Branch:</strong>
+                  <span>Global Guidelines Consultancy - Birgunj, Parsa, Nepal</span>
+                </div>
               </div>
               <div className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-red flex-shrink-0" />
-                <span>+977 1 4423890 / 9801234567</span>
+                <span>+977 1 4525327 / 4423890 / 9801234567</span>
               </div>
               <div className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-brand-red flex-shrink-0" />
-                <span>counseling@globalguidelines.com</span>
+                <span>info@globalguidelines.com</span>
               </div>
-              <div className="pt-2">
-                <Link
-                  href="/contact"
-                  className="inline-block bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-xs font-semibold transition"
+
+              {/* Social Channels */}
+              <div className="pt-2 flex items-center space-x-3">
+                <a
+                  href="https://www.facebook.com/globalguidelinesnepal"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-blue-600 text-white font-bold text-[11px] transition"
                 >
-                  Get Directions & Appointment
-                </Link>
+                  Facebook
+                </a>
+                <a
+                  href="https://www.instagram.com/globalguidelines/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-pink-500 hover:to-amber-500 text-white font-bold text-[11px] transition"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://www.tiktok.com/@globalguidelinesnepal"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-slate-700 text-white font-bold text-[11px] transition"
+                >
+                  TikTok
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Global Guidelines Consultancy and Visa Services. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Global Guidelines Consultancy and Visa Services Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center space-x-4">
             <Link href="/privacy" className="hover:text-slate-400">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-slate-400">Terms of Service</Link>
@@ -159,3 +189,4 @@ export default function PublicFooter() {
     </footer>
   );
 }
+

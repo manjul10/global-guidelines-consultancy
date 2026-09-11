@@ -35,43 +35,52 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
               <h2 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
-                Kathmandu Head Office
+                Kathmandu Head Office & Branches
               </h2>
 
               <div className="space-y-4 text-xs text-slate-600">
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Location:</strong>
-                    <span>Putalisadak / New Baneshwor, Kathmandu, Nepal</span>
+                    <strong className="block text-slate-900 font-bold">Head Office:</strong>
+                    <span>Level-3, Brihaspati Sadan, Putalisadak (near Laxmi Plaza), Kathmandu, Nepal</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-slate-900 font-bold">Birgunj Branch:</strong>
+                    <span>Global Guidelines Consultancy - Birgunj, Parsa, Nepal</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Phone className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Telephone / WhatsApp:</strong>
-                    <span>+977 1 4423890 / +977 9801234567</span>
+                    <strong className="block text-slate-900 font-bold">Telephone & Support:</strong>
+                    <span>+977 1 4525327 / +977 1 4423890 / +977 9801234567</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Mail className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Email:</strong>
-                    <span>counseling@globalguidelines.com</span>
+                    <strong className="block text-slate-900 font-bold">Email:</strong>
+                    <span>info@globalguidelines.com / counseling@globalguidelines.com</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Clock className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Counseling Hours:</strong>
-                    <span>Sunday – Friday: 9:30 AM to 5:30 PM</span>
+                    <strong className="block text-slate-900 font-bold">Counseling Hours:</strong>
+                    <span>Sunday – Friday: 9:00 AM to 5:00 PM (Saturday Closed)</span>
                   </div>
                 </div>
               </div>
             </div>
+
 
             <div className="bg-brand-navy-900 text-white p-8 rounded-2xl border border-brand-navy-800 space-y-3">
               <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold">

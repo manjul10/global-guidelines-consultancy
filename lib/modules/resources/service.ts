@@ -52,8 +52,28 @@ export async function createResource(data: ResourceInput) {
   return resource;
 }
 
+export async function updateResource(id: string, data: Partial<ResourceInput>) {
+  const updated = await prisma.resource.update({
+    where: { id },
+    data: {
+      title: data.title,
+      slug: data.slug ? slugify(data.slug) : undefined,
+      description: data.description,
+      fileUrl: data.fileUrl,
+      fileType: data.fileType,
+      fileSizeBytes: data.fileSizeBytes,
+      isGated: data.isGated,
+    },
+  });
+
+  revalidatePath("/resources");
+  revalidatePath(`/resources/${updated.slug}`);
+  return updated;
+}
+
 export async function deleteResource(id: string) {
   const deleted = await prisma.resource.delete({ where: { id } });
   revalidatePath("/resources");
   return deleted;
 }
+
