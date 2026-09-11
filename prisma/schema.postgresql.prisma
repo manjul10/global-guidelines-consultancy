@@ -1,0 +1,145 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  ARCHIVED
+}
+
+model User {
+  id            String       @id @default(cuid())
+  email         String       @unique
+  name          String
+  passwordHash  String
+  role          Role         @default(ADMIN)
+  articles      Article[]
+  mediaAssets   MediaAsset[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model Article {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  excerpt         String
+  content         String    @db.Text
+  coverImageUrl   String?
+  category        String
+  tags            String[]
+  published       Boolean   @default(false)
+  publishedAt     DateTime?
+  metaTitle       String?
+  metaDescription String?
+  authorId        String
+  author          User      @relation(fields: [authorId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([slug, published])
+}
+
+model Service {
+  id           String        @id @default(cuid())
+  title        String
+  slug         String        @unique
+  tagline      String
+  description  String        @db.Text
+  deliverables String[]
+  iconName     String?
+  featured     Boolean       @default(false)
+  displayOrder Int           @default(0)
+  testimonials Testimonial[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model CaseStudy {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  clientName  String
+  industry    String
+  challenge   String   @db.Text
+  solution    String   @db.Text
+  results     Json
+  coverImage  String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Resource {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  description   String
+  fileUrl       String
+  fileType      String
+  fileSizeBytes Int
+  downloadCount Int      @default(0)
+  isGated       Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  clientName  String
+  clientRole  String
+  companyName String
+  avatarUrl   String?
+  quote       String   @db.Text
+  rating      Int      @default(5)
+  serviceId   String?
+  service     Service? @relation(fields: [serviceId], references: [id])
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model TeamMember {
+  id           String   @id @default(cuid())
+  name         String
+  role         String
+  bio          String   @db.Text
+  avatarUrl    String?
+  linkedinUrl  String?
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+model Inquiry {
+  id                String        @id @default(cuid())
+  name              String
+  email             String
+  phone             String?
+  company           String?
+  serviceOfInterest String?
+  message           String        @db.Text
+  status            InquiryStatus @default(NEW)
+  createdAt         DateTime      @default(now())
+}
+
+model MediaAsset {
+  id          String   @id @default(cuid())
+  filename    String
+  url         String
+  mimeType    String
+  sizeBytes   Int
+  uploaderId  String
+  uploader    User     @relation(fields: [uploaderId], references: [id])
+  createdAt   DateTime @default(now())
+}
