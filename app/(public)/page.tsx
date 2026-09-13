@@ -4,6 +4,8 @@ import { getFeaturedServices } from "@/lib/modules/services/service";
 import { getPublishedCaseStudies } from "@/lib/modules/case-studies/service";
 import { getFeaturedTestimonials } from "@/lib/modules/testimonials/service";
 import { getPublishedArticles } from "@/lib/modules/articles/service";
+import { getHeroSetting, getActiveIntakeTracks } from "@/lib/modules/intakes/service";
+import { getActiveCelebrationMoments } from "@/lib/modules/celebrations/service";
 import {
   GraduationCap,
   FileCheck,
@@ -29,12 +31,72 @@ const iconMap: Record<string, typeof GraduationCap> = {
 };
 
 export default async function HomePage() {
-  const [services, caseStudies, testimonials, articles] = await Promise.all([
+  const [
+    services,
+    caseStudies,
+    testimonials,
+    articles,
+    heroSetting,
+    intakeTracks,
+    celebrationMoments,
+  ] = await Promise.all([
     getFeaturedServices(),
     getPublishedCaseStudies(),
     getFeaturedTestimonials(),
     getPublishedArticles({ limit: 3 }),
+    getHeroSetting(),
+    getActiveIntakeTracks(),
+    getActiveCelebrationMoments(),
   ]);
+
+  const fallbackTracks = [
+    {
+      id: "f-1",
+      flag: "🇺🇸",
+      country: "USA Universities",
+      intake: "Fall & Spring Intakes • F-1 Visa",
+      statusTag: "Fast Track",
+      statusColor: "brand-red",
+    },
+    {
+      id: "f-2",
+      flag: "🇦🇺",
+      country: "Australia Higher Ed",
+      intake: "Subclass 500 • Genuine Student (GS)",
+      statusTag: "Active",
+      statusColor: "emerald",
+    },
+    {
+      id: "f-3",
+      flag: "🇬🇧",
+      country: "UK Universities",
+      intake: "Jan / Sept Intakes • 2-Yr Post-Study Work",
+      statusTag: "Open",
+      statusColor: "brand-navy",
+    },
+    {
+      id: "f-4",
+      flag: "🇨🇦",
+      country: "Canada Colleges & Unis",
+      intake: "PAL & Study Permit Guidance",
+      statusTag: "High Demand",
+      statusColor: "brand-red",
+    },
+  ];
+
+  const fallbackMoments = [
+    { id: "m-1", title: "Visa Grant Moments", subtitle: "@globalguidelines", imageUrl: "/social/instagram-photo-4.jpg" },
+    { id: "m-2", title: "Counseling & Guidance", subtitle: "Putalisadak Head Office", imageUrl: "/social/instagram-photo-6.jpg" },
+    { id: "m-3", title: "Abroad Study Briefing", subtitle: "UK, USA, Australia, Europe", imageUrl: "/social/instagram-photo-8.jpg" },
+    { id: "m-4", title: "PTE & Test Prep Lab", subtitle: "Computer Mock Lab", imageUrl: "/social/instagram-photo-10.jpg" },
+    { id: "m-5", title: "CAS & Visa Success", subtitle: "Verified Stamp", imageUrl: "/social/instagram-photo-12.jpg" },
+    { id: "m-6", title: "Orientation Session", subtitle: "Pre-Departure Guidance", imageUrl: "/social/instagram-photo-15.jpg" },
+    { id: "m-7", title: "Global Guidelines Team", subtitle: "Level-3 Brihaspati Sadan", imageUrl: "/social/facebook-photo-2.jpg" },
+    { id: "m-8", title: "1-on-1 Counseling", subtitle: "Advising & Support", imageUrl: "/social/facebook-photo-14.jpg" },
+  ];
+
+  const displayTracks = intakeTracks && intakeTracks.length > 0 ? intakeTracks : fallbackTracks;
+  const displayMoments = celebrationMoments && celebrationMoments.length > 0 ? celebrationMoments : fallbackMoments;
 
   return (
     <div className="space-y-20 pb-20">
@@ -55,7 +117,7 @@ export default async function HomePage() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
                 Your Bridge to <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-brand-red to-orange-400">
+                <span className="text-brand-red">
                   Global Education
                 </span>{" "}
                 & Visa Success
@@ -118,70 +180,59 @@ export default async function HomePage() {
                       />
                     </div>
                     <span className="bg-red-50 text-brand-red font-bold text-xs px-3 py-1 rounded-full border border-red-200">
-                      Admissions Open 2026
+                      {heroSetting.badgeText}
                     </span>
                   </div>
 
                   <div>
                     <h3 className="text-xl font-black text-brand-navy">
-                      Global Study Intake 2026 / 2027
+                      {heroSetting.heading}
                     </h3>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Priority processing currently active for upcoming university intakes:
-                    </p>
+                    {heroSetting.subheading && (
+                      <p className="text-xs text-slate-500 mt-1">
+                        {heroSetting.subheading}
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xl">🇺🇸</span>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900">USA Universities</div>
-                          <div className="text-[11px] text-slate-500">Fall & Spring Intakes • F-1 Visa</div>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold text-brand-red">Fast Track</span>
-                    </div>
+                    {displayTracks.map((track) => {
+                      const badgeClass =
+                        track.statusColor === "brand-red"
+                          ? "text-brand-red"
+                          : track.statusColor === "emerald"
+                          ? "text-emerald-600"
+                          : track.statusColor === "brand-navy"
+                          ? "text-brand-navy"
+                          : track.statusColor === "gold"
+                          ? "text-amber-600"
+                          : "text-brand-red";
 
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xl">🇦🇺</span>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900">Australia Higher Ed</div>
-                          <div className="text-[11px] text-slate-500">Subclass 500 • Genuine Student (GS)</div>
+                      return (
+                        <div
+                          key={track.id}
+                          className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <span className="text-xl">{track.flag}</span>
+                            <div>
+                              <div className="text-xs font-bold text-slate-900">{track.country}</div>
+                              <div className="text-[11px] text-slate-500">{track.intake}</div>
+                            </div>
+                          </div>
+                          <span className={`text-xs font-semibold ${badgeClass}`}>
+                            {track.statusTag}
+                          </span>
                         </div>
-                      </div>
-                      <span className="text-xs font-semibold text-emerald-600">Active</span>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xl">🇬🇧</span>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900">UK Universities</div>
-                          <div className="text-[11px] text-slate-500">Jan / Sept Intakes • 2-Yr Post-Study Work</div>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold text-brand-navy">Open</span>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xl">🇨🇦</span>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900">Canada Colleges & Unis</div>
-                          <div className="text-[11px] text-slate-500">PAL & Study Permit Guidance</div>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold text-brand-red">High Demand</span>
-                    </div>
+                      );
+                    })}
                   </div>
 
                   <Link
-                    href="/contact"
+                    href={heroSetting.ctaLink || "/contact"}
                     className="w-full flex items-center justify-center space-x-2 bg-brand-navy hover:bg-brand-navy-900 text-white font-bold py-3.5 rounded-xl transition shadow text-xs"
                   >
-                    <span>Check Your Eligibility Now</span>
+                    <span>{heroSetting.ctaText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -527,111 +578,27 @@ export default async function HomePage() {
           </div>
         </div>
 
-        {/* Gallery Grid of Scraped Photos */}
+        {/* Gallery Grid of Scraped / CMS Uploaded Photos */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-4.jpg"
-              alt="Visa grant celebration at Global Guidelines"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">Visa Grant Moments</span>
-              <span className="text-[10px] text-slate-300">@globalguidelines</span>
+          {displayMoments.map((item) => (
+            <div
+              key={item.id}
+              className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.imageUrl}
+                alt={item.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
+                <span className="text-[11px] font-bold">{item.title}</span>
+                {item.subtitle && (
+                  <span className="text-[10px] text-slate-300">{item.subtitle}</span>
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-6.jpg"
-              alt="Student counseling at Putalisadak"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">Counseling & Guidance</span>
-              <span className="text-[10px] text-slate-300">Putalisadak Head Office</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-8.jpg"
-              alt="Global Study destinations briefing"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">Abroad Study Briefing</span>
-              <span className="text-[10px] text-slate-300">UK, USA, Australia, Europe</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-10.jpg"
-              alt="PTE & Language Class Sessions"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">PTE & Test Prep Lab</span>
-              <span className="text-[10px] text-slate-300">Computer Mock Lab</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-12.jpg"
-              alt="Student visa stamp celebration"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">CAS & Visa Success</span>
-              <span className="text-[10px] text-slate-300">Verified Stamp</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/instagram-photo-15.jpg"
-              alt="Pre-departure preparation"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">Orientation Session</span>
-              <span className="text-[10px] text-slate-300">Pre-Departure Guidance</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/facebook-photo-2.jpg"
-              alt="Global Guidelines Putalisadak center"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">Global Guidelines Team</span>
-              <span className="text-[10px] text-slate-300">Level-3 Brihaspati Sadan</span>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 aspect-square hover:shadow-md transition">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/social/facebook-photo-14.jpg"
-              alt="Counselor consultation"
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-end text-white">
-              <span className="text-[11px] font-bold">1-on-1 Counseling</span>
-              <span className="text-[10px] text-slate-300">Advising & Support</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

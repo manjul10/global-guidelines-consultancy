@@ -15,15 +15,25 @@ import {
 import { formatDate } from "@/lib/utils";
 
 export default async function AdminDashboardPage() {
-  const [stats, totalArticles, totalServices, totalCaseStudies, recentInquiries, recentArticles] =
-    await Promise.all([
-      getInquiryStats(),
-      prisma.article.count(),
-      prisma.service.count(),
-      prisma.caseStudy.count(),
-      prisma.inquiry.findMany({ take: 5, orderBy: { createdAt: "desc" } }),
-      prisma.article.findMany({ take: 5, orderBy: { updatedAt: "desc" } }),
-    ]);
+  const [
+    stats,
+    totalArticles,
+    totalServices,
+    totalCaseStudies,
+    totalIntakes,
+    totalCelebrations,
+    recentInquiries,
+    recentArticles,
+  ] = await Promise.all([
+    getInquiryStats(),
+    prisma.article.count(),
+    prisma.service.count(),
+    prisma.caseStudy.count(),
+    prisma.intakeTrack.count(),
+    prisma.celebrationMoment.count(),
+    prisma.inquiry.findMany({ take: 5, orderBy: { createdAt: "desc" } }),
+    prisma.article.findMany({ take: 5, orderBy: { updatedAt: "desc" } }),
+  ]);
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
@@ -34,17 +44,22 @@ export default async function AdminDashboardPage() {
             Welcome to Global Guidelines CMS
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Manage your dynamic services, published visa policy updates, and student leads.
+            Manage your dynamic services, hero intake card, visa celebration photos, and student leads.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <Link
-            href="/dashboard/articles/new"
-            className="inline-flex items-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition"
+            href="/dashboard/intakes"
+            className="inline-flex items-center space-x-1.5 bg-brand-navy hover:bg-brand-navy-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-lg shadow-sm transition"
           >
-            <Plus className="w-4 h-4" />
-            <span>New Article</span>
+            <span>Hero Intakes</span>
+          </Link>
+          <Link
+            href="/dashboard/celebrations"
+            className="inline-flex items-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white text-xs font-bold px-3.5 py-2.5 rounded-lg shadow-sm transition"
+          >
+            <span>Celebrations ({totalCelebrations})</span>
           </Link>
           <Link
             href="/"

@@ -131,3 +131,39 @@ model MediaAsset {
   uploader    User     @relation(fields: [uploaderId], references: [id])
   createdAt   DateTime @default(now())
 }
+
+model HeroSetting {
+  id          String   @id @default("default")
+  badgeText   String   @default("Admissions Open 2026")
+  heading     String   @default("Global Study Intake 2026 / 2027")
+  subheading  String   @default("Priority processing currently active for upcoming university intakes:")
+  ctaText     String   @default("Check Your Eligibility Now")
+  ctaLink     String   @default("/contact")
+  updatedAt   DateTime @updatedAt
+}
+
+model IntakeTrack {
+  id           String   @id @default(cuid())
+  country      String
+  flag         String   @default("🇺🇸")
+  intake       String
+  statusTag    String   @default("Fast Track")
+  statusColor  String   @default("brand-red") // brand-red | emerald | brand-navy | gold
+  displayOrder Int      @default(0)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CelebrationMoment {
+  id           String   @id @default(cuid())
+  title        String
+  subtitle     String?
+  imageUrl     String
+  category     String?  @default("Celebration")
+  displayOrder Int      @default(0)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+

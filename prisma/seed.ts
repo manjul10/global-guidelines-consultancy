@@ -351,6 +351,137 @@ async function main() {
     },
   });
 
+  // 8. Seed Hero Setting & Intake Tracks
+  await prisma.heroSetting.upsert({
+    where: { id: "default" },
+    update: {},
+    create: {
+      id: "default",
+      badgeText: "Admissions Open 2026",
+      heading: "Global Study Intake 2026 / 2027",
+      subheading: "Priority processing currently active for upcoming university intakes:",
+      ctaText: "Check Your Eligibility Now",
+      ctaLink: "/contact",
+    },
+  });
+
+  const intakeCount = await prisma.intakeTrack.count();
+  if (intakeCount === 0) {
+    await prisma.intakeTrack.createMany({
+      data: [
+        {
+          flag: "🇺🇸",
+          country: "USA Universities",
+          intake: "Fall & Spring Intakes • F-1 Visa",
+          statusTag: "Fast Track",
+          statusColor: "brand-red",
+          displayOrder: 1,
+          active: true,
+        },
+        {
+          flag: "🇦🇺",
+          country: "Australia Higher Ed",
+          intake: "Subclass 500 • Genuine Student (GS)",
+          statusTag: "Active",
+          statusColor: "emerald",
+          displayOrder: 2,
+          active: true,
+        },
+        {
+          flag: "🇬🇧",
+          country: "UK Universities",
+          intake: "Jan / Sept Intakes • 2-Yr Post-Study Work",
+          statusTag: "Open",
+          statusColor: "brand-navy",
+          displayOrder: 3,
+          active: true,
+        },
+        {
+          flag: "🇨🇦",
+          country: "Canada Colleges & Unis",
+          intake: "PAL & Study Permit Guidance",
+          statusTag: "High Demand",
+          statusColor: "brand-red",
+          displayOrder: 4,
+          active: true,
+        },
+      ],
+    });
+  }
+
+  // 9. Seed Celebration Moments
+  const celebrationCount = await prisma.celebrationMoment.count();
+  if (celebrationCount === 0) {
+    await prisma.celebrationMoment.createMany({
+      data: [
+        {
+          title: "Visa Grant Moments",
+          subtitle: "@globalguidelines",
+          imageUrl: "/social/instagram-photo-4.jpg",
+          category: "Visa Grant",
+          displayOrder: 1,
+          active: true,
+        },
+        {
+          title: "Counseling & Guidance",
+          subtitle: "Putalisadak Head Office",
+          imageUrl: "/social/instagram-photo-6.jpg",
+          category: "Counseling",
+          displayOrder: 2,
+          active: true,
+        },
+        {
+          title: "Abroad Study Briefing",
+          subtitle: "UK, USA, Australia, Europe",
+          imageUrl: "/social/instagram-photo-8.jpg",
+          category: "Session",
+          displayOrder: 3,
+          active: true,
+        },
+        {
+          title: "PTE & Test Prep Lab",
+          subtitle: "Computer Mock Lab",
+          imageUrl: "/social/instagram-photo-10.jpg",
+          category: "Test Prep",
+          displayOrder: 4,
+          active: true,
+        },
+        {
+          title: "CAS & Visa Success",
+          subtitle: "Verified Stamp",
+          imageUrl: "/social/instagram-photo-12.jpg",
+          category: "Visa Grant",
+          displayOrder: 5,
+          active: true,
+        },
+        {
+          title: "Orientation Session",
+          subtitle: "Pre-Departure Guidance",
+          imageUrl: "/social/instagram-photo-15.jpg",
+          category: "Orientation",
+          displayOrder: 6,
+          active: true,
+        },
+        {
+          title: "Global Guidelines Team",
+          subtitle: "Level-3 Brihaspati Sadan",
+          imageUrl: "/social/facebook-photo-2.jpg",
+          category: "Team",
+          displayOrder: 7,
+          active: true,
+        },
+        {
+          title: "1-on-1 Counseling",
+          subtitle: "Advising & Support",
+          imageUrl: "/social/facebook-photo-14.jpg",
+          category: "Counseling",
+          displayOrder: 8,
+          active: true,
+        },
+      ],
+    });
+  }
+
   console.log("Global Guidelines database seeding complete!");
 }
 

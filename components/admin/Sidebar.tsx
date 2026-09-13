@@ -16,10 +16,14 @@ import {
   Image as ImageIcon,
   ExternalLink,
   LogOut,
+  Compass,
+  Camera,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { label: "Hero Intake Tracks", href: "/dashboard/intakes", icon: Compass },
+  { label: "Life & Celebrations", href: "/dashboard/celebrations", icon: Camera },
   { label: "Articles & Insights", href: "/dashboard/articles", icon: FileText },
   { label: "Services", href: "/dashboard/services", icon: Briefcase },
   { label: "Case Studies", href: "/dashboard/case-studies", icon: Trophy },
