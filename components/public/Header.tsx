@@ -324,7 +324,7 @@ export default function PublicHeader() {
                     href="/contact"
                     className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-red transition"
                   >
-                    Kathmandu & Birgunj Branches
+                    Contact Head Office (Putalisadak)
                   </Link>
                 </div>
               )}

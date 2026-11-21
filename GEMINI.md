@@ -5,7 +5,7 @@
 - **Core Operations**: Overseas education counseling, university admissions, student visa processing, and standardized test preparation (IELTS, PTE, TOEFL, SAT, GRE, GMAT).
 - **Offices**:
   - **Head Office**: Brihaspati Sadan (3rd Floor), Putalisadak / Bagbazar, Kathmandu, Nepal (`01-4525327`, `+977-970-2709933`)
-  - **Branch Office**: Link Road, Birgunj, Nepal
+  - *(Note: Birgunj branch reference was removed per client request; Kathmandu Head Office is the sole active operational location)*
 - **Official Government Approvals & Accreditations**:
   - **MOEST Approval No**: 1459 (Ministry of Education, Science and Technology, Government of Nepal)
   - **Company Registration No**: 168812/73/074

@@ -148,7 +148,7 @@ export default function TeamManager({ initialTeam }: { initialTeam: TeamMember[]
             <h1 className="text-xl font-black text-brand-navy">Team & Education Counselors</h1>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Certified education advisors, visa documentation officers, and branch counselors across Kathmandu and Birgunj.
+            Certified education advisors, visa documentation officers, and counselors at our Kathmandu head office.
           </p>
         </div>
         <button

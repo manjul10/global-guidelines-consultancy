@@ -9,10 +9,13 @@ export default function PublicFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1: Brand & Overview */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 bg-white/5 p-3 rounded-xl border border-white/10 w-fit">
-              <div className="w-10 h-10 relative">
+            <Link
+              href="/"
+              className="inline-flex items-center space-x-3 bg-white px-4 py-2.5 rounded-2xl border border-slate-200/90 shadow-sm transition hover:shadow-md group"
+            >
+              <div className="w-10 h-10 relative flex-shrink-0">
                 <Image
-                  src="/logo-emblem-light.png"
+                  src="/logo-emblem.png"
                   alt="Global Guidelines Logo"
                   width={40}
                   height={40}
@@ -20,14 +23,14 @@ export default function PublicFooter() {
                 />
               </div>
               <div>
-                <span className="font-extrabold text-sm text-white tracking-wide block">
+                <span className="font-black text-sm text-[#0F2C59] tracking-tight leading-none block group-hover:text-brand-red transition">
                   GLOBAL GUIDELINES
                 </span>
-                <span className="text-[10px] text-brand-red font-bold uppercase tracking-wider block">
+                <span className="text-[10px] text-[#E53935] font-bold tracking-widest uppercase mt-0.5 block">
                   CONSULTANCY & VISA SERVICES
                 </span>
               </div>
-            </div>
+            </Link>
             <p className="text-xs text-slate-400 leading-relaxed">
               Your premier partner for international education, certified test preparation,
               university admissions, and visa guidance. Empowering aspiring students to achieve
@@ -132,15 +135,8 @@ export default function PublicFooter() {
               <div className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block">Kathmandu Head Office:</strong>
+                  <strong className="text-white block">Head Office:</strong>
                   <span>Level-3, Brihaspati Sadan, Putalisadak (near Laxmi Plaza), Kathmandu, Nepal</span>
-                </div>
-              </div>
-              <div className="flex items-start space-x-2.5">
-                <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block">Birgunj Branch:</strong>
-                  <span>Global Guidelines Consultancy - Birgunj, Parsa, Nepal</span>
                 </div>
               </div>
               <div className="flex items-center space-x-2.5">

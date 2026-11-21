@@ -459,7 +459,7 @@ export default async function HomePage() {
               Ready to Begin Your Global Education Journey?
             </h2>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              Connect with our certified education counselors in Kathmandu & Birgunj. We guide you through university selection, scholarship assessment, and airtight visa filing with 98.4% success.
+              Connect with our certified education counselors in Putalisadak, Kathmandu. We guide you through university selection, scholarship assessment, and airtight visa filing with 98.4% success.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">

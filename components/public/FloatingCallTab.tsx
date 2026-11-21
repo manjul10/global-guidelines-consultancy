@@ -35,7 +35,7 @@ export default function FloatingCallTab() {
             {/* Header */}
             <div className="space-y-1">
               <span className="text-brand-red text-xs font-bold uppercase tracking-wider block">
-                Direct Hotline • Putalisadak & Birgunj
+                Direct Hotline • Putalisadak, Kathmandu
               </span>
               <h3 className="text-xl font-black text-brand-navy">
                 Speak with a Senior Advisor

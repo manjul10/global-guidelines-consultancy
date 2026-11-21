@@ -1241,7 +1241,7 @@ export default function StudyAbroadPage() {
               Get Your Free Profile Assessment & University Match
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Meet our expert counselors in Kathmandu & Birgunj for personalized university selection, scholarship guidance, and step-by-step visa processing.
+              Meet our expert counselors in Putalisadak, Kathmandu for personalized university selection, scholarship guidance, and step-by-step visa processing.
             </p>
           </div>
 

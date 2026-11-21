@@ -48,14 +48,6 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-slate-900 font-bold">Birgunj Branch:</strong>
-                    <span>Global Guidelines Consultancy - Birgunj, Parsa, Nepal</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
                   <Phone className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900 font-bold">Telephone & Mobile Hotline:</strong>
