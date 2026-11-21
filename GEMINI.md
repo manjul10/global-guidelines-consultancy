@@ -140,3 +140,24 @@
   cd /home/crazzy/projects/consultancy-platform
   git push origin master && git push origin master:main
   ```
+
+---
+
+## 8. Upcoming Architecture Agenda: Document Storage Strategy (Cloud vs. Local / Database)
+> [!IMPORTANT]
+> **Priority Discussion for Next Session (Client Request)**:
+> In the upcoming session, we will evaluate and decide on the long-term production architecture for student document uploads: **Cloud Object Storage vs. Local Database / Server Storage**.
+
+### Key Factors to Discuss & Finalize:
+1. **Serverless Filesystem Persistence**:
+   - Currently, uploads write to the local directory `public/uploads/student-documents/`.
+   - On Vercel serverless production, the local filesystem is ephemeral (read-only / wiped on every deployment or cold start). Uploaded files on disk do not permanently persist unless connected to external persistent storage.
+2. **Cloud Storage Architecture (Recommended)**:
+   - **Cloudflare R2**: S3-compatible, zero egress fees, fast global CDN, simple API keys.
+   - **AWS S3 / Supabase Storage / Vercel Blob**: Standard enterprise object storage with automated backups and pre-signed private download URLs.
+3. **Database Storage (Alternative)**:
+   - Storing files directly as `BLOB` / Base64 in PostgreSQL / SQLite vs. storing metadata (file size, MIME, hash, upload timestamp) in Prisma and binary files in dedicated object storage.
+4. **Student Privacy & Access Control**:
+   - Transcripts, passports, and citizenship cards contain sensitive personal data (PII).
+   - Moving from public `/uploads/` paths to secure, authenticated counselor-only signed URLs (e.g., URLs expiring in 15 minutes for CMS admin review).
+
