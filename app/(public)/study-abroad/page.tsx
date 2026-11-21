@@ -1238,27 +1238,19 @@ export default function StudyAbroadPage() {
               Ready to Begin Your Application?
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-white">
-              Get Your Free Document & Profile Assessment
+              Get Your Free Profile Assessment & University Match
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Skip WhatsApp delays. Upload your SLC / +2 transcripts and passport directly to our counselor queue for review within 24 hours.
+              Meet our expert counselors in Kathmandu & Birgunj for personalized university selection, scholarship guidance, and step-by-step visa processing.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <Link
-              href="/upload"
+              href="/contact"
               className="inline-flex items-center justify-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-brand-red/30 transition text-xs whitespace-nowrap"
             >
-              <UploadCloud className="w-4 h-4" />
-              <span>Upload Documents Online</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-3.5 px-6 rounded-xl border border-white/20 transition text-xs whitespace-nowrap"
-            >
-              <span>Book In-Person Counseling</span>
+              <span>Book Free Counseling</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

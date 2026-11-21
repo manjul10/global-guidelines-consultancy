@@ -41,9 +41,9 @@ export default function AdminSidebar({ onNavigate }: { onNavigate?: () => void }
     <aside className="w-full h-full bg-slate-900 text-slate-200 flex flex-col border-r border-slate-800">
       {/* Brand Header */}
       <div className="p-4 border-b border-slate-800 flex items-center space-x-3">
-        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-0.5 flex-shrink-0">
+        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-1 flex-shrink-0">
           <Image
-            src="/logo.png"
+            src="/logo-emblem.png"
             alt="Global Guidelines Logo"
             width={40}
             height={40}

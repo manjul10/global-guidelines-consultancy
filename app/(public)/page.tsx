@@ -445,32 +445,31 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 8. DOCUMENT UPLOAD & COUNSELING CTA */}
+      {/* 8. ADMISSIONS & COUNSELING CTA */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#0F2C59] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-slate-800">
           <div className="relative z-10 max-w-2xl space-y-4">
             <h2 className="text-2xl sm:text-4xl font-black leading-tight text-white">
-              Ready to Apply? Upload Your Documents Online
+              Ready to Begin Your Global Education Journey?
             </h2>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              Submit your academic transcripts, test scorecards, and passport securely through our portal. Receive a unique GG tracking reference code for rapid counselor review within 24 hours.
+              Connect with our certified education counselors in Kathmandu & Birgunj. We guide you through university selection, scholarship assessment, and airtight visa filing with 98.4% success.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
               <Link
-                href="/upload"
+                href="/contact"
                 className="inline-flex items-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-lg transition transform hover:-translate-y-0.5"
               >
-                <UploadCloud className="w-4 h-4" />
-                <span>Upload Documents Now</span>
+                <span>Book Free Counseling</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
-                href="/contact"
+                href="/study-abroad"
                 className="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm border border-white/20 transition"
               >
-                <span>Book In-Person Counseling</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Explore Destination Countries</span>
               </Link>
             </div>
           </div>

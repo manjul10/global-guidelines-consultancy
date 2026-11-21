@@ -40,9 +40,9 @@ export default function LoginForm() {
   return (
     <div className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-slate-800 space-y-6">
       <div className="text-center space-y-3">
-        <div className="w-16 h-16 rounded-2xl bg-white shadow-md p-1.5 mx-auto border border-slate-100 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-2xl bg-white shadow-md p-2 mx-auto border border-slate-100 flex items-center justify-center">
           <Image
-            src="/logo.png"
+            src="/logo-emblem.png"
             alt="Global Guidelines Logo"
             width={56}
             height={56}

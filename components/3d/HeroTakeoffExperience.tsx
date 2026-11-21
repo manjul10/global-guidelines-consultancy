@@ -521,178 +521,113 @@ export default function HeroTakeoffExperience() {
     aircraftSpotlight.target = spotlightTarget;
     scene.add(aircraftSpotlight);
 
-    // 5. High-Fidelity Nepal Airlines Airliner
+    // 5. Authentic Nepal Airlines Airbus A320 Jetliner
     const airlinerHolder = new THREE.Group();
     airlinerHolder.position.set(0, 0.75, -2.5);
     scene.add(airlinerHolder);
 
-    // Authentic Nepal Airlines Airbus Livery (Rendered immediately, never missing)
-    const proceduralAirliner = new THREE.Group();
+    // Initial sleek placeholder while 3D model loads
+    const placeholderAirliner = new THREE.Group();
     {
-      const whiteBodyMat = new THREE.MeshStandardMaterial({
-        color: 0xf8fafc,
-        roughness: 0.22,
-        metalness: 0.35,
-      });
-      const wingMat = new THREE.MeshStandardMaterial({
-        color: 0xe2e8f0,
-        roughness: 0.32,
-        metalness: 0.45,
-      });
-      const nepalRedMat = new THREE.MeshStandardMaterial({
-        color: 0xdc2626, // Nepal Airlines Signature Red
-        roughness: 0.2,
-        metalness: 0.3,
-      });
-      const nepalNavyMat = new THREE.MeshStandardMaterial({
-        color: 0x0f2c59, // Nepal Airlines Signature Deep Royal Navy
-        roughness: 0.25,
-        metalness: 0.35,
-      });
-      const insigniaWhiteMat = new THREE.MeshStandardMaterial({
-        color: 0xffffff,
-        roughness: 0.2,
-        metalness: 0.1,
-      });
-      const cockpitGlassMat = new THREE.MeshStandardMaterial({
-        color: 0x0a0f1d,
-        roughness: 0.1,
-        metalness: 0.95,
-      });
-      const engineCowlingMat = new THREE.MeshStandardMaterial({
-        color: 0x94a3b8,
-        roughness: 0.3,
-        metalness: 0.7,
-      });
-      const engineSpinnerMat = new THREE.MeshStandardMaterial({
-        color: 0x1e293b,
-        roughness: 0.2,
-        metalness: 0.9,
-      });
+      const whiteMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.3, metalness: 0.2 });
+      const wingMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.35, metalness: 0.3 });
+      const redMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.2, metalness: 0.2 });
 
-      // 1. Fuselage
-      const fuselage = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.38, 7.8, 24), whiteBodyMat);
-      fuselage.rotation.x = Math.PI / 2;
-      proceduralAirliner.add(fuselage);
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.32, 7.2, 16), whiteMat);
+      body.rotation.x = Math.PI / 2;
+      placeholderAirliner.add(body);
 
-      // Aerodynamic Nose Cone
-      const noseCone = new THREE.Mesh(new THREE.ConeGeometry(0.55, 1.8, 24), whiteBodyMat);
-      noseCone.rotation.x = -Math.PI / 2;
-      noseCone.position.set(0, 0, 4.8);
-      proceduralAirliner.add(noseCone);
+      const nose = new THREE.Mesh(new THREE.ConeGeometry(0.48, 1.6, 16), whiteMat);
+      nose.rotation.x = -Math.PI / 2;
+      nose.position.set(0, 0, 4.4);
+      placeholderAirliner.add(nose);
 
-      // Cockpit Windshield Visor (Wrap-around aviation glass)
-      const visor = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.24, 0.52), cockpitGlassMat);
-      visor.position.set(0, 0.38, 4.25);
-      proceduralAirliner.add(visor);
+      const wings = new THREE.Mesh(new THREE.BoxGeometry(8.0, 0.08, 1.3), wingMat);
+      wings.position.set(0, -0.05, 0.4);
+      placeholderAirliner.add(wings);
 
-      // 2. Nepal Airlines Dual Cheatline (Red top, Navy bottom) along both sides of fuselage
-      // Left side cheatlines
-      const leftRedStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.09, 6.4), nepalRedMat);
-      leftRedStripe.position.set(-0.55, 0.12, 0.4);
-      proceduralAirliner.add(leftRedStripe);
+      const tail = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.7, 1.4), redMat);
+      tail.position.set(0, 0.85, -3.1);
+      tail.rotation.x = -0.25;
+      placeholderAirliner.add(tail);
 
-      const leftNavyStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.06, 6.4), nepalNavyMat);
-      leftNavyStripe.position.set(-0.55, 0.03, 0.4);
-      proceduralAirliner.add(leftNavyStripe);
-
-      // Right side cheatlines
-      const rightRedStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.09, 6.4), nepalRedMat);
-      rightRedStripe.position.set(0.55, 0.12, 0.4);
-      proceduralAirliner.add(rightRedStripe);
-
-      const rightNavyStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.06, 6.4), nepalNavyMat);
-      rightNavyStripe.position.set(0.55, 0.03, 0.4);
-      proceduralAirliner.add(rightNavyStripe);
-
-      // 3. Swept Aerofoil Main Wings
-      const leftWing = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.08, 1.45), wingMat);
-      leftWing.position.set(-2.5, -0.02, 0.35);
-      leftWing.rotation.y = 0.22;
-      leftWing.rotation.z = 0.04;
-      proceduralAirliner.add(leftWing);
-
-      const rightWing = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.08, 1.45), wingMat);
-      rightWing.position.set(2.5, -0.02, 0.35);
-      rightWing.rotation.y = -0.22;
-      rightWing.rotation.z = -0.04;
-      proceduralAirliner.add(rightWing);
-
-      // Red Winglets (Sharklets) with Blue Accent
-      const leftWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.65, 0.4), nepalRedMat);
-      leftWinglet.position.set(-4.7, 0.3, 0.05);
-      leftWinglet.rotation.z = -0.25;
-      proceduralAirliner.add(leftWinglet);
-
-      const rightWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.65, 0.4), nepalRedMat);
-      rightWinglet.position.set(4.7, 0.3, 0.05);
-      rightWinglet.rotation.z = 0.25;
-      proceduralAirliner.add(rightWinglet);
-
-      // 4. Twin Turbofan Engines with Pylons & Intake Rings
-      [-1.85, 1.85].forEach((engX) => {
-        // Pylon
-        const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, 0.7), whiteBodyMat);
-        pylon.position.set(engX, -0.15, 0.6);
-        proceduralAirliner.add(pylon);
-
-        // Engine Nacelle
-        const engineCowling = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.33, 0.33, 1.55, 18),
-          engineCowlingMat
-        );
-        engineCowling.rotation.x = Math.PI / 2;
-        engineCowling.position.set(engX, -0.38, 0.6);
-        proceduralAirliner.add(engineCowling);
-
-        // Spinner / Turbine Core
-        const engineCore = new THREE.Mesh(
-          new THREE.ConeGeometry(0.22, 0.6, 16),
-          engineSpinnerMat
-        );
-        engineCore.rotation.x = -Math.PI / 2;
-        engineCore.position.set(engX, -0.38, 1.35);
-        proceduralAirliner.add(engineCore);
-
-        // Front Red/Navy Intake Ring
-        const ringGeo = new THREE.TorusGeometry(0.33, 0.025, 8, 20);
-        const ring = new THREE.Mesh(ringGeo, nepalRedMat);
-        ring.position.set(engX, -0.38, 1.38);
-        proceduralAirliner.add(ring);
-      });
-
-      // 5. Nepal Airlines Vertical Tail Fin (Red with White Sun & Crescent Moon Emblem)
-      const tailFin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.05, 1.6), nepalRedMat);
-      tailFin.position.set(0, 1.05, -3.3);
-      tailFin.rotation.x = -0.28;
-      proceduralAirliner.add(tailFin);
-
-      // White Insignia / Sun Emblem on left & right sides of Tail Fin
-      [-0.07, 0.07].forEach((sideX) => {
-        // Sun disc
-        const sunGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.02, 16);
-        const sunMesh = new THREE.Mesh(sunGeo, insigniaWhiteMat);
-        sunMesh.rotation.z = Math.PI / 2;
-        sunMesh.position.set(sideX, 1.15, -3.25);
-        proceduralAirliner.add(sunMesh);
-
-        // Crescent moon arc
-        const moonGeo = new THREE.RingGeometry(0.12, 0.2, 16, 1, 0, Math.PI);
-        const moonMesh = new THREE.Mesh(moonGeo, insigniaWhiteMat);
-        moonMesh.rotation.y = sideX > 0 ? Math.PI / 2 : -Math.PI / 2;
-        moonMesh.position.set(sideX, 0.78, -3.15);
-        proceduralAirliner.add(moonMesh);
-      });
-
-      // 6. Horizontal Rear Stabilizers
-      const rearWing = new THREE.Mesh(new THREE.BoxGeometry(3.3, 0.06, 0.95), wingMat);
-      rearWing.position.set(0, 0.28, -3.65);
-      rearWing.rotation.y = 0.15;
-      proceduralAirliner.add(rearWing);
-
-      proceduralAirliner.scale.set(0.82, 0.82, 0.82);
-      airlinerHolder.add(proceduralAirliner);
+      placeholderAirliner.scale.set(0.8, 0.8, 0.8);
+      airlinerHolder.add(placeholderAirliner);
     }
+
+    // Load High-Poly Realistic Commercial Jetliner with Authentic Nepal Airlines Livery Textures
+    const texLoader = new THREE.TextureLoader();
+    const fuselageTex = texLoader.load("/textures/airplane/nepal_airlines_fuselage.png");
+    fuselageTex.flipY = false;
+    fuselageTex.colorSpace = THREE.SRGBColorSpace;
+
+    const tailTex = texLoader.load("/textures/airplane/nepal_airlines_tail.png");
+    tailTex.flipY = false;
+    tailTex.colorSpace = THREE.SRGBColorSpace;
+
+    const wingsTex = texLoader.load("/textures/airplane/nepal_airlines_wings.png");
+    wingsTex.flipY = false;
+    wingsTex.colorSpace = THREE.SRGBColorSpace;
+
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load(
+      "/models/airplane.glb",
+      (gltf) => {
+        const gltfModel = gltf.scene;
+
+        gltfModel.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            const mesh = child as THREE.Mesh;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+
+            const name = mesh.name.toLowerCase();
+            if (name === "top" || name === "t.001") {
+              mesh.material = new THREE.MeshStandardMaterial({
+                map: tailTex,
+                roughness: 0.25,
+                metalness: 0.2,
+              });
+            } else if (name === "body" || name === "b.001") {
+              mesh.material = new THREE.MeshStandardMaterial({
+                map: fuselageTex,
+                roughness: 0.25,
+                metalness: 0.25,
+              });
+            } else if (name.includes("wing") || name === "lw.001" || name === "rw.001") {
+              mesh.material = new THREE.MeshStandardMaterial({
+                map: wingsTex,
+                roughness: 0.35,
+                metalness: 0.4,
+              });
+            } else {
+              mesh.material = new THREE.MeshStandardMaterial({
+                color: 0xe2e8f0,
+                roughness: 0.35,
+                metalness: 0.3,
+              });
+            }
+          }
+        });
+
+        const box = new THREE.Box3().setFromObject(gltfModel);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+        gltfModel.position.sub(center);
+
+        const airplanePivot = new THREE.Group();
+        airplanePivot.add(gltfModel);
+        airplanePivot.rotation.y = Math.PI;
+        airplanePivot.scale.set(0.125, 0.125, 0.125);
+
+        airlinerHolder.clear();
+        airlinerHolder.add(airplanePivot);
+      },
+      undefined,
+      (err) => {
+        console.warn("GLB load note:", err);
+      }
+    );
 
     // 6. Jet Engine Exhaust Contrail Particle Ribbon
     const contrailGeo = new THREE.BufferGeometry();

@@ -12,7 +12,7 @@ export default function PublicFooter() {
             <div className="flex items-center space-x-3 bg-white/5 p-3 rounded-xl border border-white/10 w-fit">
               <div className="w-10 h-10 relative">
                 <Image
-                  src="/logo.png"
+                  src="/logo-emblem-light.png"
                   alt="Global Guidelines Logo"
                   width={40}
                   height={40}

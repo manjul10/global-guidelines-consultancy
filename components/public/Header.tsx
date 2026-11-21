@@ -76,7 +76,7 @@ export default function PublicHeader() {
           <Link href="/" className="flex items-center space-x-3 group flex-shrink-0">
             <div className="w-10 h-10 sm:w-11 sm:h-11 relative flex-shrink-0">
               <Image
-                src="/logo.png"
+                src="/logo-emblem.png"
                 alt="Global Guidelines Logo"
                 width={44}
                 height={44}

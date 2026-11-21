@@ -366,11 +366,10 @@ export default function FlightGlobeHero() {
           </button>
 
           <Link
-            href="/upload"
+            href="/contact"
             className="inline-flex items-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-md transition text-xs"
           >
-            <UploadCloud className="w-3.5 h-3.5" />
-            <span>Upload Documents Directly</span>
+            <span>Free Counseling</span>
           </Link>
         </div>
       </div>
@@ -484,11 +483,11 @@ export default function FlightGlobeHero() {
             {/* Action Buttons */}
             <div className="pt-2 space-y-2.5">
               <Link
-                href="/upload"
+                href={`/study-abroad?country=${activeDest.id.toUpperCase()}`}
                 className="w-full inline-flex items-center justify-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold py-3 px-5 rounded-xl shadow-lg shadow-brand-red/30 transition text-xs"
               >
-                <UploadCloud className="w-4 h-4" />
-                <span>Upload Documents for {activeDest.name} Assessment</span>
+                <span>Explore {activeDest.name} Universities</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
 
               <Link
