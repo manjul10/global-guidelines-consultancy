@@ -521,170 +521,178 @@ export default function HeroTakeoffExperience() {
     aircraftSpotlight.target = spotlightTarget;
     scene.add(aircraftSpotlight);
 
-    // 5. High-Fidelity Airliner Holder & Procedural Geometry
+    // 5. High-Fidelity Nepal Airlines Airliner
     const airlinerHolder = new THREE.Group();
     airlinerHolder.position.set(0, 0.75, -2.5);
     scene.add(airlinerHolder);
 
-    // Instant High-Fidelity Procedural Jetliner (Rendered on Frame 0, Never Missing)
+    // Authentic Nepal Airlines Airbus Livery (Rendered immediately, never missing)
     const proceduralAirliner = new THREE.Group();
     {
       const whiteBodyMat = new THREE.MeshStandardMaterial({
         color: 0xf8fafc,
-        roughness: 0.25,
-        metalness: 0.4,
+        roughness: 0.22,
+        metalness: 0.35,
       });
       const wingMat = new THREE.MeshStandardMaterial({
         color: 0xe2e8f0,
-        roughness: 0.35,
-        metalness: 0.5,
+        roughness: 0.32,
+        metalness: 0.45,
       });
-      const brandRedMat = new THREE.MeshStandardMaterial({
-        color: 0xe53935,
+      const nepalRedMat = new THREE.MeshStandardMaterial({
+        color: 0xdc2626, // Nepal Airlines Signature Red
         roughness: 0.2,
+        metalness: 0.3,
+      });
+      const nepalNavyMat = new THREE.MeshStandardMaterial({
+        color: 0x0f2c59, // Nepal Airlines Signature Deep Royal Navy
+        roughness: 0.25,
         metalness: 0.35,
       });
+      const insigniaWhiteMat = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        roughness: 0.2,
+        metalness: 0.1,
+      });
       const cockpitGlassMat = new THREE.MeshStandardMaterial({
-        color: 0x0f172a,
+        color: 0x0a0f1d,
         roughness: 0.1,
+        metalness: 0.95,
+      });
+      const engineCowlingMat = new THREE.MeshStandardMaterial({
+        color: 0x94a3b8,
+        roughness: 0.3,
+        metalness: 0.7,
+      });
+      const engineSpinnerMat = new THREE.MeshStandardMaterial({
+        color: 0x1e293b,
+        roughness: 0.2,
         metalness: 0.9,
       });
-      const engineChromeMat = new THREE.MeshStandardMaterial({
-        color: 0x64748b,
-        roughness: 0.2,
-        metalness: 0.8,
-      });
 
-      // Streamlined Fuselage: Nose at +Z, Tail at -Z
-      const fuselage = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.38, 7.8, 20), whiteBodyMat);
+      // 1. Fuselage
+      const fuselage = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.38, 7.8, 24), whiteBodyMat);
       fuselage.rotation.x = Math.PI / 2;
-      fuselage.position.set(0, 0, 0);
       proceduralAirliner.add(fuselage);
 
       // Aerodynamic Nose Cone
-      const noseCone = new THREE.Mesh(new THREE.ConeGeometry(0.55, 1.8, 20), whiteBodyMat);
+      const noseCone = new THREE.Mesh(new THREE.ConeGeometry(0.55, 1.8, 24), whiteBodyMat);
       noseCone.rotation.x = -Math.PI / 2;
       noseCone.position.set(0, 0, 4.8);
       proceduralAirliner.add(noseCone);
 
-      // Cockpit Windshield Visor
-      const visor = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.22, 0.5), cockpitGlassMat);
-      visor.position.set(0, 0.4, 4.2);
+      // Cockpit Windshield Visor (Wrap-around aviation glass)
+      const visor = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.24, 0.52), cockpitGlassMat);
+      visor.position.set(0, 0.38, 4.25);
       proceduralAirliner.add(visor);
 
-      // Swept Aerofoil Main Wings
-      const leftWing = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.08, 1.4), wingMat);
-      leftWing.position.set(-2.4, 0, 0.4);
+      // 2. Nepal Airlines Dual Cheatline (Red top, Navy bottom) along both sides of fuselage
+      // Left side cheatlines
+      const leftRedStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.09, 6.4), nepalRedMat);
+      leftRedStripe.position.set(-0.55, 0.12, 0.4);
+      proceduralAirliner.add(leftRedStripe);
+
+      const leftNavyStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.06, 6.4), nepalNavyMat);
+      leftNavyStripe.position.set(-0.55, 0.03, 0.4);
+      proceduralAirliner.add(leftNavyStripe);
+
+      // Right side cheatlines
+      const rightRedStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.09, 6.4), nepalRedMat);
+      rightRedStripe.position.set(0.55, 0.12, 0.4);
+      proceduralAirliner.add(rightRedStripe);
+
+      const rightNavyStripe = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.06, 6.4), nepalNavyMat);
+      rightNavyStripe.position.set(0.55, 0.03, 0.4);
+      proceduralAirliner.add(rightNavyStripe);
+
+      // 3. Swept Aerofoil Main Wings
+      const leftWing = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.08, 1.45), wingMat);
+      leftWing.position.set(-2.5, -0.02, 0.35);
       leftWing.rotation.y = 0.22;
-      leftWing.rotation.z = 0.05;
+      leftWing.rotation.z = 0.04;
       proceduralAirliner.add(leftWing);
 
-      const rightWing = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.08, 1.4), wingMat);
-      rightWing.position.set(2.4, 0, 0.4);
+      const rightWing = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.08, 1.45), wingMat);
+      rightWing.position.set(2.5, -0.02, 0.35);
       rightWing.rotation.y = -0.22;
-      rightWing.rotation.z = -0.05;
+      rightWing.rotation.z = -0.04;
       proceduralAirliner.add(rightWing);
 
-      // Red Winglets on Wingtips
-      const leftWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.55, 0.35), brandRedMat);
-      leftWinglet.position.set(-4.5, 0.26, 0.1);
+      // Red Winglets (Sharklets) with Blue Accent
+      const leftWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.65, 0.4), nepalRedMat);
+      leftWinglet.position.set(-4.7, 0.3, 0.05);
       leftWinglet.rotation.z = -0.25;
       proceduralAirliner.add(leftWinglet);
 
-      const rightWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.55, 0.35), brandRedMat);
-      rightWinglet.position.set(4.5, 0.26, 0.1);
+      const rightWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.65, 0.4), nepalRedMat);
+      rightWinglet.position.set(4.7, 0.3, 0.05);
       rightWinglet.rotation.z = 0.25;
       proceduralAirliner.add(rightWinglet);
 
-      // Dual CFM Turbofan Engines Under Wings
-      [-1.8, 1.8].forEach((engX) => {
+      // 4. Twin Turbofan Engines with Pylons & Intake Rings
+      [-1.85, 1.85].forEach((engX) => {
+        // Pylon
+        const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, 0.7), whiteBodyMat);
+        pylon.position.set(engX, -0.15, 0.6);
+        proceduralAirliner.add(pylon);
+
+        // Engine Nacelle
         const engineCowling = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.32, 0.32, 1.5, 16),
-          whiteBodyMat
+          new THREE.CylinderGeometry(0.33, 0.33, 1.55, 18),
+          engineCowlingMat
         );
         engineCowling.rotation.x = Math.PI / 2;
         engineCowling.position.set(engX, -0.38, 0.6);
         proceduralAirliner.add(engineCowling);
 
+        // Spinner / Turbine Core
         const engineCore = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.24, 0.24, 1.55, 16),
-          engineChromeMat
+          new THREE.ConeGeometry(0.22, 0.6, 16),
+          engineSpinnerMat
         );
-        engineCore.rotation.x = Math.PI / 2;
-        engineCore.position.set(engX, -0.38, 0.6);
+        engineCore.rotation.x = -Math.PI / 2;
+        engineCore.position.set(engX, -0.38, 1.35);
         proceduralAirliner.add(engineCore);
+
+        // Front Red/Navy Intake Ring
+        const ringGeo = new THREE.TorusGeometry(0.33, 0.025, 8, 20);
+        const ring = new THREE.Mesh(ringGeo, nepalRedMat);
+        ring.position.set(engX, -0.38, 1.38);
+        proceduralAirliner.add(ring);
       });
 
-      // Signature Brand-Red Vertical Tail Stabilizer (#E53935)
-      const tailFin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.9, 1.5), brandRedMat);
-      tailFin.position.set(0, 0.95, -3.3);
+      // 5. Nepal Airlines Vertical Tail Fin (Red with White Sun & Crescent Moon Emblem)
+      const tailFin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.05, 1.6), nepalRedMat);
+      tailFin.position.set(0, 1.05, -3.3);
       tailFin.rotation.x = -0.28;
       proceduralAirliner.add(tailFin);
 
-      // Horizontal Rear Stabilizers
-      const rearWing = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.06, 0.9), wingMat);
-      rearWing.position.set(0, 0.25, -3.6);
+      // White Insignia / Sun Emblem on left & right sides of Tail Fin
+      [-0.07, 0.07].forEach((sideX) => {
+        // Sun disc
+        const sunGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.02, 16);
+        const sunMesh = new THREE.Mesh(sunGeo, insigniaWhiteMat);
+        sunMesh.rotation.z = Math.PI / 2;
+        sunMesh.position.set(sideX, 1.15, -3.25);
+        proceduralAirliner.add(sunMesh);
+
+        // Crescent moon arc
+        const moonGeo = new THREE.RingGeometry(0.12, 0.2, 16, 1, 0, Math.PI);
+        const moonMesh = new THREE.Mesh(moonGeo, insigniaWhiteMat);
+        moonMesh.rotation.y = sideX > 0 ? Math.PI / 2 : -Math.PI / 2;
+        moonMesh.position.set(sideX, 0.78, -3.15);
+        proceduralAirliner.add(moonMesh);
+      });
+
+      // 6. Horizontal Rear Stabilizers
+      const rearWing = new THREE.Mesh(new THREE.BoxGeometry(3.3, 0.06, 0.95), wingMat);
+      rearWing.position.set(0, 0.28, -3.65);
       rearWing.rotation.y = 0.15;
       proceduralAirliner.add(rearWing);
 
       proceduralAirliner.scale.set(0.82, 0.82, 0.82);
       airlinerHolder.add(proceduralAirliner);
     }
-
-    // Load External 3D GLTF Model (airplane.glb) seamlessly
-    const loader = new GLTFLoader();
-    loader.load(
-      "/models/airplane.glb",
-      (gltf) => {
-        const gltfModel = gltf.scene;
-
-        gltfModel.traverse((child) => {
-          if ((child as THREE.Mesh).isMesh) {
-            const mesh = child as THREE.Mesh;
-            mesh.castShadow = true;
-            mesh.receiveShadow = true;
-
-            if (mesh.name === "top") {
-              mesh.material = new THREE.MeshStandardMaterial({
-                color: 0xe53935,
-                metalness: 0.35,
-                roughness: 0.2,
-              });
-            } else if (mesh.name === "body") {
-              mesh.material = new THREE.MeshStandardMaterial({
-                color: 0xf8fafc,
-                metalness: 0.45,
-                roughness: 0.25,
-              });
-            } else if (mesh.name === "leftwing" || mesh.name === "rightwing") {
-              mesh.material = new THREE.MeshStandardMaterial({
-                color: 0xe2e8f0,
-                metalness: 0.55,
-                roughness: 0.3,
-              });
-            }
-          }
-        });
-
-        const box = new THREE.Box3().setFromObject(gltfModel);
-        const center = new THREE.Vector3();
-        box.getCenter(center);
-        gltfModel.position.sub(center);
-
-        const airplanePivot = new THREE.Group();
-        airplanePivot.add(gltfModel);
-        // GLB internal model has nose at -Z, rotation.y = Math.PI places nose at +Z matching holder
-        airplanePivot.rotation.y = Math.PI;
-        airplanePivot.scale.set(0.12, 0.12, 0.12);
-
-        airlinerHolder.remove(proceduralAirliner);
-        airlinerHolder.add(airplanePivot);
-      },
-      undefined,
-      (err) => {
-        console.warn("GLB load note (procedural jetliner remains active):", err);
-      }
-    );
 
     // 6. Jet Engine Exhaust Contrail Particle Ribbon
     const contrailGeo = new THREE.BufferGeometry();
@@ -704,7 +712,7 @@ export default function HeroTakeoffExperience() {
     const contrailPoints = new THREE.Points(contrailGeo, contrailMat);
     scene.add(contrailPoints);
 
-    // 7. Realistic 3D Earth Globe
+    // 7. Realistic 3D Earth Globe (Clean, Natural NASA Blue Marble)
     const earthRadius = 4.2;
     const earthGroup = new THREE.Group();
     earthGroup.position.set(0, -35, -30);
@@ -757,69 +765,17 @@ export default function HeroTakeoffExperience() {
     const atmosphereMesh = new THREE.Mesh(atmosphereGeo, atmosphereMat);
     earthGroup.add(atmosphereMesh);
 
-    // Kathmandu Departure Pin
-    const ktmPos = latLngToVector3(KATHMANDU.lat, KATHMANDU.lng, earthRadius);
-    const ktmPin = new THREE.Mesh(
-      new THREE.SphereGeometry(0.12, 16, 16),
-      new THREE.MeshBasicMaterial({ color: 0xe53935 })
-    );
-    ktmPin.position.copy(ktmPos);
-    earthGroup.add(ktmPin);
-
-    // Concentric Sonar Ring around Kathmandu
-    const sonarGeo = new THREE.RingGeometry(0.15, 0.28, 24);
-    const sonarMat = new THREE.MeshBasicMaterial({
-      color: 0xf59e0b,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.8,
-    });
-    const sonarRing = new THREE.Mesh(sonarGeo, sonarMat);
-    sonarRing.position.copy(ktmPos.clone().multiplyScalar(1.01));
-    sonarRing.lookAt(ktmPos.clone().multiplyScalar(2));
-    earthGroup.add(sonarRing);
-
-    // 3D Flight Arcs
-    DESTINATIONS.forEach((dest) => {
-      const destPos = latLngToVector3(dest.lat, dest.lng, earthRadius);
-
-      const pin = new THREE.Mesh(
-        new THREE.SphereGeometry(0.09, 12, 12),
-        new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
-      );
-      pin.position.copy(destPos);
-      earthGroup.add(pin);
-
-      const midPoint = new THREE.Vector3().addVectors(ktmPos, destPos).multiplyScalar(0.5);
-      const distance = ktmPos.distanceTo(destPos);
-      const arcHeight = Math.min(distance * 0.35, 2.2);
-      midPoint.setLength(earthRadius + arcHeight);
-
-      const curve = new THREE.QuadraticBezierCurve3(ktmPos, midPoint, destPos);
-      const points = curve.getPoints(50);
-      const arcGeo = new THREE.BufferGeometry().setFromPoints(points);
-
-      const arcMat = new THREE.LineDashedMaterial({
-        color: 0xf59e0b,
-        dashSize: 0.3,
-        gapSize: 0.15,
-        linewidth: 2,
-      });
-      const arcLine = new THREE.Line(arcGeo, arcMat);
-      arcLine.computeLineDistances();
-      earthGroup.add(arcLine);
-    });
-
     scene.add(earthGroup);
 
     // -------------------------------------------------------------
-    // UNIFIED CONTINUOUS TRAJECTORY (ZERO TELEPORTATION, ZERO DISAPPEARING)
+    // UNIFIED CONTINUOUS TRAJECTORY (NO CLIPPING, NO PENETRATION)
     // -------------------------------------------------------------
     function getOrbitPoint(angle: number, targetEarthY: number): THREE.Vector3 {
-      const r = earthRadius + 0.45;
-      const x = Math.sin(angle) * r * 1.15;
-      const y = targetEarthY + 0.6 + Math.cos(angle * 0.75) * 0.6;
-      const z = -8.5 + Math.cos(angle) * r * 0.85;
+      // Safe orbital altitude comfortably above atmosphere (4.55) & clouds (4.25)
+      const r = earthRadius + 1.25; // 5.45 units
+      const x = Math.sin(angle) * (r * 1.18);
+      const y = targetEarthY + 0.85 + Math.sin(angle * 0.8 + 0.4) * (r * 0.35);
+      const z = -8.5 + Math.cos(angle) * (r * 1.08);
       return new THREE.Vector3(x, y, z);
     }
 
@@ -901,6 +857,15 @@ export default function HeroTakeoffExperience() {
         camPos.lerpVectors(exitCam, orbitCam, smoothS);
         lookTarget.lerpVectors(exitTarget, orbitTarget, s);
 
+        // Anti-penetration safety clamp: airplane strictly remains outside atmosphere & clouds
+        const toEarth = planePos.clone().sub(earthPos);
+        const currentDist = toEarth.length();
+        const minSafeDist = earthRadius * earthScale + 0.95;
+        if (currentDist < minSafeDist && currentDist > 0.001) {
+          toEarth.setLength(minSafeDist);
+          planePos.copy(earthPos.clone().add(toEarth));
+        }
+
         planeScale = THREE.MathUtils.lerp(1.0, 0.16, s);
         runwayY = -120;
         contrailOpacity = Math.max(0, 0.85 - s * 2.0);
@@ -956,11 +921,6 @@ export default function HeroTakeoffExperience() {
         lastReportedPhase = currentPhase;
         setActivePhase(currentPhase);
       }
-
-      // Sonar pulse
-      const pulse = (time * 1.5) % 1;
-      sonarRing.scale.set(1 + pulse * 1.8, 1 + pulse * 1.8, 1);
-      (sonarRing.material as THREE.MeshBasicMaterial).opacity = 1 - pulse;
 
       // Clouds rotation
       cloudsMesh.rotation.y += delta * 0.03;
@@ -1068,20 +1028,8 @@ export default function HeroTakeoffExperience() {
               : "opacity-0 -translate-y-12 pointer-events-none"
           }`}
         >
-          {/* Top Status & Title Section (Positioned high so plane is 100% visible) */}
-          <div className="max-w-7xl mx-auto w-full space-y-3 pt-3 sm:pt-4">
-            <div className="flex items-center justify-between">
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-emerald-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>FLIGHT GG-1459 • TRIBHUVAN INT'L AIRPORT (KTM)</span>
-              </div>
-
-              <div className="hidden sm:inline-flex items-center space-x-2 bg-brand-red/20 border border-brand-red/40 px-3.5 py-1.5 rounded-full text-xs font-bold text-red-200">
-                <ShieldCheck className="w-4 h-4 text-brand-red" />
-                <span>MOEST Approval No. 1459</span>
-              </div>
-            </div>
-
+          {/* Top Title Section (Positioned high so runway & plane are in clear view) */}
+          <div className="max-w-7xl mx-auto w-full pt-4 sm:pt-6">
             <div className="text-center max-w-3xl mx-auto space-y-2 pt-1">
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase drop-shadow-2xl">
                 From Nepal to <br />
@@ -1093,17 +1041,17 @@ export default function HeroTakeoffExperience() {
             </div>
           </div>
 
-          {/* Bottom Prompt: Scroll to take off */}
+          {/* Bottom Prompt: Scroll Down */}
           <div className="max-w-md mx-auto text-center space-y-2 pointer-events-auto pb-10 sm:pb-14">
             <button
               onClick={scrollToHeroContent}
-              className="inline-flex flex-col items-center space-y-2 text-xs font-mono font-bold text-amber-400 hover:text-white transition group"
+              className="inline-flex flex-col items-center space-y-2 text-xs font-semibold text-white/90 hover:text-white transition group cursor-pointer"
             >
-              <div className="flex items-center space-x-2 bg-white/10 px-5 py-2.5 rounded-full border border-white/20 backdrop-blur-md shadow-xl group-hover:bg-brand-red group-hover:border-brand-red transition">
-                <Plane className="w-4 h-4 text-brand-red group-hover:text-white transition transform -rotate-45" />
-                <span>Scroll Down to Accelerate & Take Off ✈️</span>
+              <div className="flex items-center space-x-2 bg-slate-900/85 px-5 py-2.5 rounded-full border border-white/20 backdrop-blur-md shadow-2xl group-hover:border-brand-red group-hover:bg-slate-900 transition">
+                <Plane className="w-4 h-4 text-brand-red fill-brand-red transition transform -rotate-45" />
+                <span className="font-bold tracking-wide text-white text-xs sm:text-sm">Scroll Down</span>
               </div>
-              <ChevronDown className="w-5 h-5 text-amber-400 animate-bounce" />
+              <ChevronDown className="w-4 h-4 text-white/70 animate-bounce" />
             </button>
           </div>
         </div>
@@ -1128,16 +1076,6 @@ export default function HeroTakeoffExperience() {
               <h2 className="text-lg sm:text-2xl font-black text-white">
                 Global Education & Visa Pathways
               </h2>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              <Link
-                href="/upload"
-                className="inline-flex items-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold px-4 py-2 rounded-xl text-xs shadow-lg shadow-brand-red/30 transition transform hover:-translate-y-0.5"
-              >
-                <UploadCloud className="w-4 h-4" />
-                <span>Upload Documents (Direct Review)</span>
-              </Link>
             </div>
           </div>
 
@@ -1223,11 +1161,11 @@ export default function HeroTakeoffExperience() {
                 </Link>
 
                 <Link
-                  href="/upload"
+                  href={`/study-abroad?country=${activeDest.id.toUpperCase()}`}
                   className="inline-flex items-center justify-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow-md transition"
                 >
-                  <UploadCloud className="w-3.5 h-3.5" />
-                  <span>Upload Files</span>
+                  <span>Explore Programs</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

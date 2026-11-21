@@ -15,7 +15,7 @@ export async function saveMediaAsset(file: File, uploaderId: string) {
   // 1. Ensure directory exists
   await fs.mkdir(UPLOAD_DIR, { recursive: true });
 
-  // 2. Validate MIME type
+  // 2. Validate MIME type & Extension
   const allowedMime = [
     "image/jpeg",
     "image/png",
@@ -27,20 +27,40 @@ export async function saveMediaAsset(file: File, uploaderId: string) {
     throw new Error(`Unsupported file type: ${file.type}`);
   }
 
+  const ext = path.extname(file.name).toLowerCase();
+  const allowedExts = new Set([".jpg", ".jpeg", ".png", ".webp", ".svg", ".pdf"]);
+  if (!allowedExts.has(ext)) {
+    throw new Error(`Unsupported file extension: ${ext}`);
+  }
+
   // 3. Validate size (Images: 5MB, PDF: 25MB)
-  const isPdf = file.type === "application/pdf";
+  const isPdf = file.type === "application/pdf" || ext === ".pdf";
   const maxSize = isPdf ? 25 * 1024 * 1024 : 5 * 1024 * 1024;
   if (file.size > maxSize) {
     throw new Error(`File exceeds maximum allowed size of ${isPdf ? "25MB" : "5MB"}`);
   }
 
-  // 4. Generate unique clean filename
-  const cleanName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
-  const uniqueName = `${Date.now()}_${Math.random().toString(36).substring(2, 8)}_${cleanName}`;
+  const buffer = Buffer.from(await file.arrayBuffer());
+
+  // 4. Sanitize SVG against Stored XSS (<script>, onload, javascript: schemes)
+  if (file.type === "image/svg+xml" || ext === ".svg") {
+    const svgText = buffer.toString("utf8").toLowerCase();
+    if (
+      svgText.includes("<script") ||
+      svgText.includes("javascript:") ||
+      svgText.includes("onload=") ||
+      svgText.includes("onerror=")
+    ) {
+      throw new Error("SVG contains prohibited executable scripts or event handlers.");
+    }
+  }
+
+  // 5. Generate unique clean filename
+  const cleanBase = path.basename(file.name, ext).replace(/[^a-zA-Z0-9_-]/g, "_").substring(0, 32);
+  const uniqueName = `${Date.now()}_${Math.random().toString(36).substring(2, 8)}_${cleanBase}${ext}`;
   const filePath = path.join(UPLOAD_DIR, uniqueName);
 
-  // 5. Write to disk
-  const buffer = Buffer.from(await file.arrayBuffer());
+  // 6. Write to disk
   await fs.writeFile(filePath, buffer);
 
   const publicUrl = `/uploads/${uniqueName}`;

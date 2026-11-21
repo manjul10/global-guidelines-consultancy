@@ -431,11 +431,11 @@ export default function StudyAbroadPage() {
               </button>
 
               <Link
-                href="/upload"
+                href="/contact"
                 className="bg-brand-red hover:bg-brand-red-600 text-white font-bold px-5 py-3 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center space-x-2"
               >
-                <UploadCloud className="w-4 h-4" />
-                <span>Upload Documents</span>
+                <span>Book Free Counseling</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -525,11 +525,11 @@ export default function StudyAbroadPage() {
           </div>
 
           <Link
-            href="/upload"
-            className="hidden sm:inline-flex items-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition"
+            href="/contact"
+            className="hidden sm:inline-flex items-center space-x-2 bg-brand-navy hover:bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition"
           >
-            <UploadCloud className="w-4 h-4" />
-            <span>Upload Documents (WhatsApp Alternative)</span>
+            <span>Book 1-on-1 Session</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
@@ -685,11 +685,11 @@ export default function StudyAbroadPage() {
                   {/* Action Link */}
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                     <Link
-                      href="/upload"
-                      className="w-full inline-flex items-center justify-center space-x-1.5 bg-brand-red hover:bg-brand-red-600 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow-sm transition"
+                      href="/contact"
+                      className="w-full inline-flex items-center justify-center space-x-1.5 bg-brand-navy hover:bg-slate-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow-xs transition"
                     >
-                      <UploadCloud className="w-3.5 h-3.5" />
-                      <span>Upload Documents</span>
+                      <span>Inquire / Apply for Admission</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
 
                     <Link

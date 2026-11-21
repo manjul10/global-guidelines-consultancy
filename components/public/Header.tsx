@@ -52,11 +52,6 @@ export default function PublicHeader() {
               Careers at Global Guidelines
             </Link>
             <span className="text-slate-300">|</span>
-            <Link href="/upload" className="hover:text-brand-navy transition flex items-center space-x-1">
-              <UploadCloud className="w-3 h-3 text-brand-red" />
-              <span>Upload Documents</span>
-            </Link>
-            <span className="text-slate-300">|</span>
             <Link
               href="/login"
               className="text-slate-700 hover:text-brand-navy transition font-semibold"
@@ -93,9 +88,6 @@ export default function PublicHeader() {
               <div className="flex items-center space-x-1.5">
                 <span className="block font-black text-lg sm:text-xl text-[#0F2C59] tracking-tight leading-none group-hover:text-brand-red transition">
                   GLOBAL GUIDELINES
-                </span>
-                <span className="hidden sm:inline-block bg-slate-100 text-slate-600 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border border-slate-200">
-                  #1459
                 </span>
               </div>
               <span className="block text-[10px] font-bold text-[#E53935] tracking-widest uppercase mt-0.5">
@@ -391,13 +383,6 @@ export default function PublicHeader() {
               className="block px-3 py-2.5 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 hover:text-brand-red transition"
             >
               About Our Team
-            </Link>
-            <Link
-              href="/upload"
-              onClick={() => setMobileOpen(false)}
-              className="block px-3 py-2.5 rounded-xl text-sm font-bold text-brand-red bg-red-50/60"
-            >
-              📄 Upload Documents Online
             </Link>
           </div>
 

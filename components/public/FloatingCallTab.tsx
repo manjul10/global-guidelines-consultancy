@@ -100,14 +100,14 @@ export default function FloatingCallTab() {
               </div>
             </div>
 
-            {/* Quick Upload Alternative */}
+            {/* Counseling Appointment Button */}
             <div className="pt-4">
               <a
-                href="/upload"
+                href="/contact"
                 onClick={() => setModalOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl text-xs transition"
+                className="w-full flex items-center justify-center space-x-2 bg-brand-navy hover:bg-slate-900 text-white font-bold py-3 rounded-xl text-xs transition"
               >
-                <span>Upload Documents for 24hr Assessment</span>
+                <span>Book In-Person Counseling Visit</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>

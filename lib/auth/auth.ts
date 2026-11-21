@@ -61,5 +61,10 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET || "development-secret-antigravity-2026",
+  secret: (() => {
+    if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
+      console.warn("⚠️ SECURITY WARNING: NEXTAUTH_SECRET is not set in production environment!");
+    }
+    return process.env.NEXTAUTH_SECRET || "development-secret-antigravity-2026";
+  })(),
 };
