@@ -59,7 +59,7 @@ export default function FloatingCallTab() {
                     <div className="text-xs font-bold text-slate-800 group-hover:text-brand-red transition">
                       Kathmandu Head Office
                     </div>
-                    <div className="text-sm font-black font-mono text-brand-navy">
+                    <div className="text-sm font-black tracking-tight text-brand-navy">
                       01-4525327
                     </div>
                   </div>
@@ -79,7 +79,7 @@ export default function FloatingCallTab() {
                     <div className="text-xs font-bold text-slate-800 group-hover:text-brand-red transition">
                       Mobile & WhatsApp Hotline
                     </div>
-                    <div className="text-sm font-black font-mono text-brand-navy">
+                    <div className="text-sm font-black tracking-tight text-brand-navy">
                       +977 970-2709933
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export default function FloatingCallTab() {
               <a
                 href="/contact"
                 onClick={() => setModalOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 bg-brand-navy hover:bg-slate-900 text-white font-bold py-3 rounded-xl text-xs transition"
+                className="w-full flex items-center justify-center space-x-2 bg-brand-navy hover:bg-brand-navy-900 text-white font-bold py-3 rounded-xl text-xs transition"
               >
                 <span>Book In-Person Counseling Visit</span>
                 <ArrowRight className="w-3.5 h-3.5" />

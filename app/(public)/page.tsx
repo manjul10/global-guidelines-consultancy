@@ -123,7 +123,7 @@ export default async function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-3xl">🇺🇸</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/80">
                   97.8% Visa Rate
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default async function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-3xl">🇬🇧</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/80">
                   98.6% Visa Rate
                 </span>
               </div>
@@ -197,7 +197,7 @@ export default async function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-3xl">🇦🇺</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/80">
                   96.9% Visa Rate
                 </span>
               </div>
@@ -234,7 +234,7 @@ export default async function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-3xl">🇨🇦</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/80">
                   95.4% Visa Rate
                 </span>
               </div>
@@ -271,7 +271,7 @@ export default async function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-3xl">🇪🇺</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/80">
                   98.1% Visa Rate
                 </span>
               </div>
@@ -329,7 +329,7 @@ export default async function HomePage() {
               key={idx}
               className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-2xs hover:shadow-md transition text-center space-y-2"
             >
-              <span className="inline-block font-mono text-xs font-black text-brand-red bg-red-50 px-2 py-0.5 rounded-md">
+              <span className="inline-block text-xs font-black text-brand-red bg-red-50 px-2.5 py-0.5 rounded-md">
                 {item.step}
               </span>
               <h4 className="text-xs font-bold text-slate-900 leading-tight">{item.title}</h4>

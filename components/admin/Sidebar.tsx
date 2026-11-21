@@ -38,15 +38,15 @@ export default function AdminSidebar({ onNavigate }: { onNavigate?: () => void }
   const pathname = usePathname();
 
   return (
-    <aside className="w-full h-full bg-slate-900 text-slate-200 flex flex-col border-r border-slate-800">
+    <aside className="w-full h-full bg-brand-navy-950 text-slate-200 flex flex-col border-r border-brand-navy-900">
       {/* Brand Header */}
-      <div className="p-4 border-b border-slate-800 flex items-center space-x-3">
-        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-1 flex-shrink-0">
+      <div className="p-4 border-b border-brand-navy-900 flex items-center space-x-3">
+        <div className="w-9 h-9 relative flex-shrink-0">
           <Image
-            src="/logo-emblem.png"
+            src="/logo-emblem-light.png"
             alt="Global Guidelines Logo"
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             className="w-full h-full object-contain"
           />
         </div>

@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
 
 export default function PublicFooter() {
   return (
-    <footer className="bg-brand-navy-950 text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-brand-navy-950 text-slate-300 pt-16 pb-12 border-t border-brand-navy-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1: Brand & Overview */}
@@ -184,7 +184,7 @@ export default function PublicFooter() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mt-12 pt-8 border-t border-brand-navy-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} Global Guidelines Consultancy and Visa Services Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center space-x-4">
             <Link href="/privacy" className="hover:text-slate-400">Privacy Policy</Link>

@@ -982,7 +982,7 @@ export default function HeroTakeoffExperience() {
               onClick={scrollToHeroContent}
               className="inline-flex flex-col items-center space-y-2 text-xs font-semibold text-white/90 hover:text-white transition group cursor-pointer"
             >
-              <div className="flex items-center space-x-2 bg-slate-900/85 px-5 py-2.5 rounded-full border border-white/20 backdrop-blur-md shadow-2xl group-hover:border-brand-red group-hover:bg-slate-900 transition">
+              <div className="flex items-center space-x-2 bg-brand-navy-950/85 px-5 py-2.5 rounded-full border border-white/20 backdrop-blur-md shadow-2xl group-hover:border-brand-red group-hover:bg-brand-navy-900 transition">
                 <Plane className="w-4 h-4 text-brand-red fill-brand-red transition transform -rotate-45" />
                 <span className="font-bold tracking-wide text-white text-xs sm:text-sm">Scroll Down</span>
               </div>
@@ -1004,7 +1004,7 @@ export default function HeroTakeoffExperience() {
           {/* Top Flight Radar Bar */}
           <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
             <div className="space-y-0.5">
-              <div className="inline-flex items-center space-x-2 text-xs font-mono text-amber-400">
+              <div className="inline-flex items-center space-x-2 text-xs font-semibold text-amber-300 tracking-wide">
                 <Globe2 className="w-4 h-4 text-brand-red animate-spin" style={{ animationDuration: "12s" }} />
                 <span>IN ORBIT: KATHMANDU (KTM) ➔ {activeDest.code}</span>
               </div>
@@ -1018,7 +1018,7 @@ export default function HeroTakeoffExperience() {
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pb-4">
             {/* Left: Destination Pills */}
             <div className="lg:col-span-7 space-y-3">
-              <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">
                 Select Destination Country:
               </span>
               <div className="flex flex-wrap gap-2">
@@ -1036,7 +1036,7 @@ export default function HeroTakeoffExperience() {
                     >
                       <span className="text-base">{d.flag}</span>
                       <span>{d.name}</span>
-                      <span className="text-[10px] opacity-75 font-mono">({d.code})</span>
+                      <span className="text-[10px] opacity-80 font-bold">({d.code})</span>
                     </button>
                   );
                 })}
@@ -1068,8 +1068,8 @@ export default function HeroTakeoffExperience() {
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] font-mono text-emerald-300 uppercase block">Visa Clearance</span>
-                  <span className="text-base font-black text-emerald-400 font-mono">
+                  <span className="text-[10px] font-bold text-emerald-300 uppercase tracking-wider block">Visa Clearance</span>
+                  <span className="text-base font-black text-emerald-400">
                     {activeDest.successRate}
                   </span>
                 </div>

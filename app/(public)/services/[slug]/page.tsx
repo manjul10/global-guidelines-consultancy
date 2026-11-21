@@ -63,7 +63,7 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-brand-navy-900 to-slate-900 text-white p-8 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-6">
+          <div className="bg-gradient-to-r from-brand-navy-900 to-brand-navy-950 text-white p-8 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="space-y-1 text-center sm:text-left">
               <h3 className="text-lg font-bold">Ready to take the next step?</h3>
               <p className="text-xs text-slate-300">

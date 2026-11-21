@@ -424,7 +424,7 @@ export default function StudyAbroadPage() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveTab("programs")}
-                className="bg-brand-navy hover:bg-slate-900 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-md transition transform hover:-translate-y-0.5 flex items-center space-x-2"
+                className="bg-brand-navy hover:bg-brand-navy-900 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-md transition transform hover:-translate-y-0.5 flex items-center space-x-2"
               >
                 <span>Find Universities</span>
                 <ArrowRight className="w-4 h-4" />
@@ -526,7 +526,7 @@ export default function StudyAbroadPage() {
 
           <Link
             href="/contact"
-            className="hidden sm:inline-flex items-center space-x-2 bg-brand-navy hover:bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition"
+            className="hidden sm:inline-flex items-center space-x-2 bg-brand-navy hover:bg-brand-navy-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition"
           >
             <span>Book 1-on-1 Session</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -652,7 +652,7 @@ export default function StudyAbroadPage() {
                     </div>
 
                     {/* Quick Stats Grid */}
-                    <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-1">
+                    <div className="grid grid-cols-2 gap-2 text-xs pt-1">
                       <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                         <span className="text-[10px] text-slate-400 block uppercase font-sans">Annual Tuition</span>
                         <span className="font-bold text-brand-navy">{program.currencyLabel}</span>
@@ -686,7 +686,7 @@ export default function StudyAbroadPage() {
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                     <Link
                       href="/contact"
-                      className="w-full inline-flex items-center justify-center space-x-1.5 bg-brand-navy hover:bg-slate-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow-xs transition"
+                      className="w-full inline-flex items-center justify-center space-x-1.5 bg-brand-navy hover:bg-brand-navy-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow-xs transition"
                     >
                       <span>Inquire / Apply for Admission</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -770,7 +770,7 @@ export default function StudyAbroadPage() {
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                     <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                       <span>Listening Score</span>
-                      <span className="text-brand-navy text-sm font-mono">{listening.toFixed(1)}</span>
+                      <span className="text-brand-navy text-sm font-black">{listening.toFixed(1)}</span>
                     </div>
                     <input
                       type="range"
@@ -787,7 +787,7 @@ export default function StudyAbroadPage() {
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                     <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                       <span>Reading Score</span>
-                      <span className="text-brand-navy text-sm font-mono">{reading.toFixed(1)}</span>
+                      <span className="text-brand-navy text-sm font-black">{reading.toFixed(1)}</span>
                     </div>
                     <input
                       type="range"
@@ -804,7 +804,7 @@ export default function StudyAbroadPage() {
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                     <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                       <span>Writing Score</span>
-                      <span className="text-brand-navy text-sm font-mono">{writing.toFixed(1)}</span>
+                      <span className="text-brand-navy text-sm font-black">{writing.toFixed(1)}</span>
                     </div>
                     <input
                       type="range"
@@ -821,7 +821,7 @@ export default function StudyAbroadPage() {
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                     <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                       <span>Speaking Score</span>
-                      <span className="text-brand-navy text-sm font-mono">{speaking.toFixed(1)}</span>
+                      <span className="text-brand-navy text-sm font-black">{speaking.toFixed(1)}</span>
                     </div>
                     <input
                       type="range"
@@ -838,10 +838,10 @@ export default function StudyAbroadPage() {
                 {/* Score Output Banner */}
                 <div className="bg-brand-navy text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
                   <div className="space-y-1 text-center sm:text-left">
-                    <span className="text-xs uppercase font-mono tracking-wider text-amber-400">
+                    <span className="text-xs uppercase font-bold tracking-wider text-amber-300">
                       Computed Overall IELTS Result:
                     </span>
-                    <div className="text-4xl sm:text-5xl font-black font-mono">
+                    <div className="text-4xl sm:text-5xl font-black text-white">
                       Band {overallIelts.toFixed(1)}
                     </div>
                     <div className="text-xs text-slate-300">
@@ -920,25 +920,25 @@ export default function StudyAbroadPage() {
                   <div className="divide-y divide-slate-200 text-xs">
                     <div className="py-2.5 flex justify-between">
                       <span className="text-slate-600">1st Year University Tuition:</span>
-                      <span className="font-bold text-brand-navy font-mono">
+                      <span className="font-bold text-brand-navy">
                         {livingCostEstimate.currency} {tuitionPerYear.toLocaleString()}
                       </span>
                     </div>
                     <div className="py-2.5 flex justify-between">
                       <span className="text-slate-600">Mandatory 1-Year Government Living Cost:</span>
-                      <span className="font-bold text-brand-navy font-mono">
+                      <span className="font-bold text-brand-navy">
                         {livingCostEstimate.currency} {livingCostEstimate.living.toLocaleString()}
                       </span>
                     </div>
                     <div className="py-2.5 flex justify-between">
                       <span className="text-slate-600">Airfare & Contingency Allowance:</span>
-                      <span className="font-bold text-brand-navy font-mono">
+                      <span className="font-bold text-brand-navy">
                         {livingCostEstimate.currency} {livingCostEstimate.travel.toLocaleString()}
                       </span>
                     </div>
                     <div className="py-3 flex justify-between text-sm font-bold bg-white p-3 rounded-xl mt-2 border border-slate-200">
                       <span className="text-brand-navy">Total Required Proof of Funds:</span>
-                      <span className="text-brand-red font-mono font-black">
+                      <span className="text-brand-red font-black">
                         {livingCostEstimate.currency} {totalProofOfFunds.toLocaleString()}
                       </span>
                     </div>
@@ -949,7 +949,7 @@ export default function StudyAbroadPage() {
                       <span className="font-bold text-emerald-800 block">Approximate Nepalese Rupees (NPR) Equivalent:</span>
                       <span className="text-[11px] text-emerald-600">Based on standard indicative foreign exchange rate</span>
                     </div>
-                    <div className="text-xl font-black text-emerald-700 font-mono">
+                    <div className="text-xl font-black text-emerald-700">
                       NPR ~{(totalNPR / 100000).toFixed(2)} Lakhs
                     </div>
                   </div>
@@ -976,7 +976,7 @@ export default function StudyAbroadPage() {
                   <div className="space-y-2">
                     <label className="flex justify-between text-xs font-bold text-slate-700">
                       <span>Enter Your Nepal GPA (0.0 - 4.0):</span>
-                      <span className="text-brand-navy font-mono text-sm">{nepalGpa.toFixed(2)}</span>
+                      <span className="text-brand-navy font-bold text-sm">{nepalGpa.toFixed(2)}</span>
                     </label>
                     <input
                       type="range"
@@ -999,7 +999,7 @@ export default function StudyAbroadPage() {
 
                     <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                       <span className="text-slate-500 font-medium">US Admissions Equivalent:</span>
-                      <span className="font-bold text-brand-red font-mono">
+                      <span className="font-bold text-brand-red">
                         {nepalGpa >= 3.5 ? "3.6 - 4.0 (Tier-1 Eligible)" : nepalGpa >= 3.0 ? "3.0 - 3.4 (Direct Entry)" : "2.5 - 2.9 (Pathway Entry)"}
                       </span>
                     </div>
@@ -1037,7 +1037,7 @@ export default function StudyAbroadPage() {
             <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-900 text-white divide-x divide-slate-800">
+                  <tr className="bg-[#0F2C59] text-white divide-x divide-white/10">
                     <th className="p-4 font-bold">Country & Destination</th>
                     <th className="p-4 font-bold">Post-Study Work (PSW)</th>
                     <th className="p-4 font-bold">Part-Time Work Rights</th>
@@ -1056,7 +1056,7 @@ export default function StudyAbroadPage() {
                       1 Year OPT (Up to 3 Years for STEM majors)
                     </td>
                     <td className="p-4">20 hrs/week on-campus during terms; 40 hrs in breaks</td>
-                    <td className="p-4 font-mono font-bold">$18,000 – $32,000 / yr</td>
+                    <td className="p-4 font-bold text-slate-900">$18,000 – $32,000 / yr</td>
                     <td className="p-4">F-2 Visa (Cannot work legally in USA)</td>
                     <td className="p-4 font-bold text-amber-600">Mandatory 1-on-1 In-person Interview</td>
                   </tr>
@@ -1070,7 +1070,7 @@ export default function StudyAbroadPage() {
                       2 Years Graduate Route (3 Years for PhD)
                     </td>
                     <td className="p-4">20 hrs/week off-campus during term time</td>
-                    <td className="p-4 font-mono font-bold">£13,000 – £20,000 / yr</td>
+                    <td className="p-4 font-bold text-slate-900">£13,000 – £20,000 / yr</td>
                     <td className="p-4">Allowed for Research & PhD students only</td>
                     <td className="p-4 font-bold text-emerald-600">Credibility interview (Random / Rare)</td>
                   </tr>
@@ -1084,7 +1084,7 @@ export default function StudyAbroadPage() {
                       2 – 4 Years Post-Study Work (Subclass 485)
                     </td>
                     <td className="p-4 font-bold text-brand-navy">48 hrs/fortnight (Uncapped during holidays)</td>
-                    <td className="p-4 font-mono font-bold">AUD 28,000 – 42,000 / yr</td>
+                    <td className="p-4 font-bold text-slate-900">AUD 28,000 – 42,000 / yr</td>
                     <td className="p-4 font-bold text-emerald-600">Full work rights for Master's dependents</td>
                     <td className="p-4 font-bold text-blue-600">Genuine Student (GS) assessment</td>
                   </tr>
@@ -1098,7 +1098,7 @@ export default function StudyAbroadPage() {
                       Up to 3-Year Open Post-Graduation Work Permit (PGWP)
                     </td>
                     <td className="p-4">24 hrs/week off-campus during terms</td>
-                    <td className="p-4 font-mono font-bold">CAD 18,000 – 30,000 / yr</td>
+                    <td className="p-4 font-bold text-slate-900">CAD 18,000 – 30,000 / yr</td>
                     <td className="p-4">Spouse Open Work Permit (Master's / Degree)</td>
                     <td className="p-4 font-bold text-slate-600">Paperless biometric submission</td>
                   </tr>
@@ -1112,7 +1112,7 @@ export default function StudyAbroadPage() {
                       18 Months Job Search Visa across Schengen zone
                     </td>
                     <td className="p-4">120 full days / 240 half days per year</td>
-                    <td className="p-4 font-mono font-bold text-emerald-700">€0 Tuition in German Public Universities</td>
+                    <td className="p-4 font-bold text-emerald-700">€0 Tuition in German Public Universities</td>
                     <td className="p-4">Family reunification permitted</td>
                     <td className="p-4 font-bold text-amber-600">VFS / Embassy verification appointment</td>
                   </tr>
@@ -1232,9 +1232,9 @@ export default function StudyAbroadPage() {
       {/* 4. BOTTOM ACTION CTA                                           */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="bg-gradient-to-r from-brand-navy-950 via-slate-900 to-brand-navy-900 rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl border border-white/10">
+        <div className="bg-gradient-to-r from-brand-navy-950 via-[#0F2C59] to-brand-navy-900 rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl border border-white/10">
           <div className="space-y-3 text-center md:text-left">
-            <span className="text-xs font-mono uppercase tracking-widest text-amber-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-300">
               Ready to Begin Your Application?
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-white">

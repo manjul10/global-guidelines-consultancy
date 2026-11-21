@@ -41,7 +41,7 @@ export default function PublicHeader() {
             <span className="font-semibold text-slate-900">
               Learn Today, Lead Globally: Start Your Journey in the USA & Beyond
             </span>
-            <span className="inline-block w-4 h-4 rounded-full bg-slate-900 text-white text-[10px] flex items-center justify-center font-bold group-hover:bg-brand-red transition">
+            <span className="inline-block w-4 h-4 rounded-full bg-brand-navy text-white text-[10px] flex items-center justify-center font-bold group-hover:bg-brand-red transition">
               ➔
             </span>
           </Link>
@@ -335,7 +335,7 @@ export default function PublicHeader() {
           <div className="flex items-center space-x-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center justify-center border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition duration-200"
+              className="hidden sm:inline-flex items-center justify-center border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition duration-200"
             >
               GET STARTED
             </Link>
@@ -390,7 +390,7 @@ export default function PublicHeader() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full flex items-center justify-center bg-slate-900 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider"
+              className="w-full flex items-center justify-center bg-brand-navy hover:bg-brand-navy-900 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider shadow-sm transition"
             >
               GET STARTED
             </Link>

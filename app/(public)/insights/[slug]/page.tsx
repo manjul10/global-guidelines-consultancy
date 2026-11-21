@@ -98,7 +98,7 @@ export default async function InsightDetailPage({ params }: { params: { slug: st
           )}
 
           {/* CTA Box */}
-          <div className="bg-gradient-to-r from-brand-navy-950 to-slate-900 text-white p-8 sm:p-10 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-6 mt-12">
+          <div className="bg-gradient-to-r from-brand-navy-950 via-[#0F2C59] to-brand-navy-900 text-white p-8 sm:p-10 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-6 mt-12 border border-white/10 shadow-xl">
             <div className="space-y-1 text-center sm:text-left">
               <h3 className="text-lg font-bold">Have Questions About This Policy?</h3>
               <p className="text-xs text-slate-300">

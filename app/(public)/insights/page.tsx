@@ -46,7 +46,7 @@ export default async function InsightsPage() {
                     />
                   </div>
                 ) : (
-                  <div className="h-40 bg-gradient-to-r from-brand-navy-900 to-slate-900 flex items-center justify-center text-white/40">
+                  <div className="h-40 bg-gradient-to-r from-brand-navy-900 to-brand-navy-950 flex items-center justify-center text-white/40">
                     <BookOpen className="w-12 h-12" />
                   </div>
                 )}

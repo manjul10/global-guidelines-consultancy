@@ -3,7 +3,7 @@ import LoginForm from "@/components/admin/LoginForm";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-navy-950 via-[#0F2C59] to-brand-navy-900 flex items-center justify-center p-4">
       <Suspense
         fallback={
           <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border border-slate-800 text-center text-xs text-slate-500 animate-pulse">
