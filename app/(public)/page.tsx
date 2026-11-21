@@ -451,31 +451,36 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 8. ADMISSIONS & COUNSELING CTA */}
+      {/* 8. DOCUMENT UPLOAD & COUNSELING CTA */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#0F2C59] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-brand-navy-700/60">
           <div className="relative z-10 max-w-2xl space-y-4">
+            <div className="inline-flex items-center space-x-2 bg-red-500/20 text-brand-red px-3 py-1 rounded-full text-xs font-bold border border-red-500/30">
+              <UploadCloud className="w-3.5 h-3.5" />
+              <span>Instant Document Review Portal</span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-black leading-tight text-white">
-              Ready to Begin Your Global Education Journey?
+              Ready to Apply? Upload Your Documents Online
             </h2>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              Connect with our certified education counselors in Putalisadak, Kathmandu. We guide you through university selection, scholarship assessment, and airtight visa filing with 98.4% success.
+              Submit your academic transcripts, test scorecards, and passport securely through our online upload portal. Receive a unique GG tracking reference code for rapid counselor review within 24 hours.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
               <Link
-                href="/contact"
-                className="inline-flex items-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-lg transition transform hover:-translate-y-0.5"
+                href="/upload"
+                className="inline-flex items-center space-x-2 bg-brand-red hover:bg-brand-red-600 text-white font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-brand-red/30 transition transform hover:-translate-y-0.5"
               >
-                <span>Book Free Counseling</span>
-                <ArrowRight className="w-4 h-4" />
+                <UploadCloud className="w-4 h-4" />
+                <span>Upload Documents Now</span>
               </Link>
 
               <Link
-                href="/study-abroad"
-                className="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm border border-white/20 transition"
+                href="/contact"
+                className="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm border border-white/20 transition"
               >
-                <span>Explore Destination Countries</span>
+                <span>Book In-Person Counseling</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>

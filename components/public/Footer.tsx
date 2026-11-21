@@ -123,6 +123,12 @@ export default function PublicFooter() {
                   Book Free Consultation
                 </Link>
               </li>
+              <li>
+                <Link href="/upload" className="hover:text-brand-red text-slate-300 font-semibold transition flex items-center space-x-1">
+                  <span className="text-brand-red">▸</span>
+                  <span>Upload Documents Portal</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

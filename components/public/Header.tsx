@@ -53,6 +53,14 @@ export default function PublicHeader() {
             </Link>
             <span className="text-slate-300">|</span>
             <Link
+              href="/upload"
+              className="hover:text-brand-navy transition flex items-center space-x-1 font-semibold text-brand-red"
+            >
+              <UploadCloud className="w-3.5 h-3.5" />
+              <span>Upload Documents</span>
+            </Link>
+            <span className="text-slate-300">|</span>
+            <Link
               href="/login"
               className="text-slate-700 hover:text-brand-navy transition font-semibold"
             >
@@ -148,6 +156,17 @@ export default function PublicHeader() {
                     <div>
                       <div className="text-xs font-bold text-slate-900">IELTS & PTE Mock Lab</div>
                       <div className="text-[11px] text-slate-500">Computerized scoring lab in Putalisadak</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/upload"
+                    className="flex items-start space-x-3 px-4 py-2.5 hover:bg-red-50/60 transition group border-t border-slate-100 mt-1"
+                  >
+                    <UploadCloud className="w-4 h-4 text-brand-red mt-0.5 flex-shrink-0 group-hover:scale-110 transition" />
+                    <div>
+                      <div className="text-xs font-bold text-brand-red">Upload Student Documents</div>
+                      <div className="text-[11px] text-slate-500">Fast-track transcript & passport evaluation</div>
                     </div>
                   </Link>
                 </div>
@@ -383,6 +402,14 @@ export default function PublicHeader() {
               className="block px-3 py-2.5 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 hover:text-brand-red transition"
             >
               About Our Team
+            </Link>
+            <Link
+              href="/upload"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center space-x-2 px-3 py-2.5 rounded-xl text-sm font-bold text-brand-red bg-red-50/70"
+            >
+              <UploadCloud className="w-4 h-4" />
+              <span>Upload Documents Online</span>
             </Link>
           </div>
 
