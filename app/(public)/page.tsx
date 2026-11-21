@@ -67,32 +67,32 @@ export default async function HomePage() {
 
       {/* 3. CORE ACCREDITATION & TRUST CREDENTIALS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0b1320] text-white rounded-2xl shadow-xl border border-slate-800 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y lg:divide-y-0 lg:divide-x divide-slate-800/80">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
           <div className="text-center pt-3 lg:pt-0">
-            <div className="inline-flex items-center space-x-1 text-emerald-400 text-xs font-mono font-bold mb-1">
+            <div className="inline-flex items-center space-x-1 bg-emerald-50 text-emerald-700 border border-emerald-200/70 px-2 py-0.5 rounded-full text-[11px] font-bold mb-1.5">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>MOEST #1459</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-white">Govt Approved</div>
-            <div className="text-xs text-slate-400 mt-0.5">Ministry of Education Verified</div>
+            <div className="text-2xl sm:text-3xl font-black text-[#0F2C59]">Govt Approved</div>
+            <div className="text-xs text-slate-500 font-medium mt-0.5">Ministry of Education Verified</div>
           </div>
 
           <div className="text-center pt-3 lg:pt-0">
-            <div className="text-xs font-mono font-bold text-amber-400 mb-1">VERIFIED RECORD</div>
-            <div className="text-2xl sm:text-3xl font-black text-white">98.4%</div>
-            <div className="text-xs text-slate-400 mt-0.5">Visa Clearance Rate</div>
+            <div className="text-[11px] font-bold text-brand-red tracking-wider uppercase mb-1.5">VERIFIED RECORD</div>
+            <div className="text-2xl sm:text-3xl font-black text-[#0F2C59]">98.4%</div>
+            <div className="text-xs text-slate-500 font-medium mt-0.5">Visa Clearance Rate</div>
           </div>
 
           <div className="text-center pt-3 lg:pt-0">
-            <div className="text-xs font-mono font-bold text-brand-red mb-1">GLOBAL ALUMNI</div>
-            <div className="text-2xl sm:text-3xl font-black text-white">3,500+</div>
-            <div className="text-xs text-slate-400 mt-0.5">Students Enrolled Overseas</div>
+            <div className="text-[11px] font-bold text-[#0F2C59] tracking-wider uppercase mb-1.5">GLOBAL ALUMNI</div>
+            <div className="text-2xl sm:text-3xl font-black text-[#0F2C59]">3,500+</div>
+            <div className="text-xs text-slate-500 font-medium mt-0.5">Students Enrolled Overseas</div>
           </div>
 
           <div className="text-center pt-3 lg:pt-0">
-            <div className="text-xs font-mono font-bold text-sky-400 mb-1">DIRECT PIPELINE</div>
-            <div className="text-2xl sm:text-3xl font-black text-white">500+</div>
-            <div className="text-xs text-slate-400 mt-0.5">Partner Institutions</div>
+            <div className="text-[11px] font-bold text-slate-600 tracking-wider uppercase mb-1.5">DIRECT PIPELINE</div>
+            <div className="text-2xl sm:text-3xl font-black text-[#0F2C59]">500+</div>
+            <div className="text-xs text-slate-500 font-medium mt-0.5">Partner Institutions</div>
           </div>
         </div>
       </section>
@@ -341,57 +341,63 @@ export default async function HomePage() {
 
       {/* 6. TEST PREPARATION HIGHLIGHT (IELTS & PTE IN PUTALISADAK) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0b1320] text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50/80 rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
-            <h3 className="text-2xl sm:text-3xl font-black leading-tight text-white">
+            <span className="text-[11px] font-bold text-brand-red tracking-widest uppercase block">
+              Official Test Preparation Center
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black leading-tight text-[#0F2C59]">
               Score High on IELTS & PTE with Certified Trainers
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
               Equipped with a modern computer mock test lab in Putalisadak matching official Pearson & IDP exam environments. Get personalized feedback from instructors with 10+ years of experience.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-              <div className="bg-white/10 rounded-xl p-3 border border-white/10">
-                <Laptop className="w-4 h-4 text-amber-400 mb-1" />
-                <div className="text-xs font-bold">Mock Test Lab</div>
-                <div className="text-[10px] text-slate-400">Weekly scored simulations</div>
+              <div className="bg-white rounded-xl p-3.5 border border-slate-200/80 shadow-xs">
+                <Laptop className="w-4 h-4 text-[#0F2C59] mb-1.5" />
+                <div className="text-xs font-bold text-slate-900">Mock Test Lab</div>
+                <div className="text-[10px] text-slate-500 font-medium">Weekly scored simulations</div>
               </div>
-              <div className="bg-white/10 rounded-xl p-3 border border-white/10">
-                <Clock className="w-4 h-4 text-emerald-400 mb-1" />
-                <div className="text-xs font-bold">Flexible Shifts</div>
-                <div className="text-[10px] text-slate-400">Morning, Day & Evening</div>
+              <div className="bg-white rounded-xl p-3.5 border border-slate-200/80 shadow-xs">
+                <Clock className="w-4 h-4 text-brand-red mb-1.5" />
+                <div className="text-xs font-bold text-slate-900">Flexible Shifts</div>
+                <div className="text-[10px] text-slate-500 font-medium">Morning, Day & Evening</div>
               </div>
-              <div className="bg-white/10 rounded-xl p-3 border border-white/10 col-span-2 sm:col-span-1">
-                <Award className="w-4 h-4 text-sky-400 mb-1" />
-                <div className="text-xs font-bold">Free Materials</div>
-                <div className="text-[10px] text-slate-400">Cambridge & Pearson sets</div>
+              <div className="bg-white rounded-xl p-3.5 border border-slate-200/80 shadow-xs col-span-2 sm:col-span-1">
+                <Award className="w-4 h-4 text-[#0F2C59] mb-1.5" />
+                <div className="text-xs font-bold text-slate-900">Free Materials</div>
+                <div className="text-[10px] text-slate-500 font-medium">Cambridge & Pearson sets</div>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 space-y-4">
-            <h4 className="text-base font-bold text-white border-b border-white/10 pb-2">
-              Register for Free Mock Test
-            </h4>
-            <div className="space-y-2 text-xs">
-              <div className="flex justify-between py-1 border-b border-white/5">
+          <div className="lg:col-span-5 bg-[#0F2C59] text-white rounded-2xl p-6 sm:p-7 shadow-lg border border-brand-navy-700 space-y-4">
+            <div className="border-b border-white/10 pb-3">
+              <span className="text-[10px] font-bold text-brand-red uppercase tracking-wider block">Putalisadak Campus</span>
+              <h4 className="text-base font-bold text-white mt-0.5">
+                Register for Free Mock Test
+              </h4>
+            </div>
+            <div className="space-y-2.5 text-xs">
+              <div className="flex justify-between py-1 border-b border-white/10">
                 <span className="text-slate-300">IELTS Academic Target:</span>
-                <span className="font-bold text-amber-400">Band 6.5 - 7.5+</span>
+                <span className="font-bold text-amber-300">Band 6.5 - 7.5+</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="flex justify-between py-1 border-b border-white/10">
                 <span className="text-slate-300">PTE Academic Target:</span>
-                <span className="font-bold text-emerald-400">Score 58 - 68+</span>
+                <span className="font-bold text-emerald-300">Score 58 - 68+</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="flex justify-between py-1 border-b border-white/10">
                 <span className="text-slate-300">Classroom Location:</span>
-                <span className="font-bold text-slate-200">Putalisadak, Kathmandu</span>
+                <span className="font-bold text-white">Putalisadak, Kathmandu</span>
               </div>
             </div>
 
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="w-full bg-brand-red hover:bg-brand-red-600 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-md transition"
+                className="w-full bg-brand-red hover:bg-brand-red-600 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-md transition transform hover:-translate-y-0.5"
               >
                 <span>Book Free Assessment Class</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -447,7 +453,7 @@ export default async function HomePage() {
 
       {/* 8. ADMISSIONS & COUNSELING CTA */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0F2C59] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-slate-800">
+        <div className="bg-[#0F2C59] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-brand-navy-700/60">
           <div className="relative z-10 max-w-2xl space-y-4">
             <h2 className="text-2xl sm:text-4xl font-black leading-tight text-white">
               Ready to Begin Your Global Education Journey?
