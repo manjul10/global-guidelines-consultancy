@@ -47,10 +47,14 @@
   - **Dark Navy Accents**: Strictly Deep Royal Navy (`#0F2C59` / `bg-brand-navy-950`). **No pitch-black `#0b1320` or `#000000` or terminal cyberpunk monospace styles with neon colors.**
 - **Logos**:
   - Light Backgrounds (Navbar, Login card): `/logo-emblem.png` with crisp Royal Navy & Nepal Red typography (no blurry duplicate subtext underneath).
-  - Dark Navy Backgrounds (Footer, Admin Sidebar): `/logo-emblem-light.png` seamlessly integrated without any white square box.
+  - Dark Navy Backgrounds (Footer, Admin Sidebar): Elevated white brand badge (`bg-white px-4 py-2.5 rounded-2xl border border-slate-200/90 shadow-sm`) with the authentic `/logo-emblem.png` (Deep Royal Navy `#0F2C59` cap & Nepal Red `#E53935` chevron).
   - The duplicate `#1459` tag next to the header title was explicitly removed per client preference.
-- **Document Upload Links**:
-  - Strictly confined to the dedicated [`/upload`](/upload) route. Removed from top ticker and general marketing banners to maintain a clean student inquiry funnel.
+- **Document Upload Placement**:
+  - Dedicated full-featured portal at [`/upload`](/upload) with 25MB file validation, magic-byte security, and unique reference codes (`GG-DOC-XXXXX`).
+  - Homepage featured CTA (Section 8): *"Ready to Apply? Upload Your Documents Online"* with direct *"Upload Documents Now"* button.
+  - Header Utility Strip: *"Upload Documents"* link alongside student and partner logins.
+  - Services Navigation Dropdown: Direct entry *"Upload Student Documents - Fast-track transcript & passport evaluation"*.
+  - Footer Quick Links: Direct entry *"Upload Documents Portal"*.
 
 ---
 
