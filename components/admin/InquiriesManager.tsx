@@ -4,7 +4,20 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { changeInquiryStatusAction } from "@/app/actions/inquiryStatus";
 import { formatDate } from "@/lib/utils";
-import { Mail, Phone, Clock, CheckCircle2, ChevronRight, MessageSquare, Loader2, ArrowLeft } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Clock,
+  CheckCircle2,
+  ChevronRight,
+  MessageSquare,
+  Loader2,
+  ArrowLeft,
+  FileText,
+  ExternalLink,
+  Download,
+  Paperclip,
+} from "lucide-react";
 
 interface Inquiry {
   id: string;
@@ -31,6 +44,30 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
     if (filter === "ALL") return true;
     return inq.status === filter;
   });
+
+  const parseInquiryData = (msg: string) => {
+    const metaMatch = msg.match(/__METADATA_JSON__:([\s\S]*)$/);
+    if (metaMatch && metaMatch[1]) {
+      try {
+        const parsed = JSON.parse(metaMatch[1]);
+        const cleanMessage = msg.replace(/__METADATA_JSON__:[\s\S]*$/, "").trim();
+        return {
+          isPortalSubmission: true,
+          refCode: parsed.refCode || null,
+          documents: (parsed.documents as Array<{ filename: string; docType: string; url: string; sizeBytes: number }>) || [],
+          cleanMessage,
+        };
+      } catch (e) {
+        // fallback
+      }
+    }
+    return {
+      isPortalSubmission: false,
+      refCode: null,
+      documents: [],
+      cleanMessage: msg,
+    };
+  };
 
   async function handleStatusChange(id: string, newStatus: string) {
     setUpdatingId(id);
@@ -79,6 +116,7 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
           ) : (
             filtered.map((inq) => {
               const isSelected = selectedInquiry?.id === inq.id;
+              const inqMeta = parseInquiryData(inq.message);
               return (
                 <div
                   key={inq.id}
@@ -91,7 +129,7 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
                   }`}
                 >
                   <div className="min-w-0 space-y-1">
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 flex-wrap gap-1">
                       <span className="text-xs font-bold text-slate-900">{inq.name}</span>
                       <span
                         className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
@@ -106,13 +144,22 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
                       >
                         {inq.status}
                       </span>
+                      {inqMeta.isPortalSubmission && (
+                        <span className="inline-flex items-center space-x-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-brand-red">
+                          <Paperclip className="w-2.5 h-2.5" />
+                          <span>{inqMeta.documents.length} Docs</span>
+                        </span>
+                      )}
                     </div>
                     <div className="text-[11px] text-slate-500 truncate">
+                      {inq.company && inq.company.startsWith("GG-DOC") ? (
+                        <span className="font-mono text-brand-red font-semibold">[{inq.company}] </span>
+                      ) : null}
                       {inq.serviceOfInterest ? `Target: ${inq.serviceOfInterest} • ` : ""}
                       {inq.email}
                     </div>
                     <p className="text-[11px] text-slate-600 line-clamp-1 italic">
-                      "{inq.message}"
+                      "{inqMeta.cleanMessage.substring(0, 100)}"
                     </p>
                   </div>
 
@@ -125,112 +172,190 @@ export default function InquiriesManager({ initialInquiries }: { initialInquirie
 
         {/* Right: Detailed View */}
         <div className={`lg:col-span-6 ${mobileView === "list" ? "hidden lg:block" : "block"}`}>
-          {selectedInquiry ? (
-            <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 shadow-sm space-y-6 lg:sticky lg:top-24">
-              {/* Mobile Back to List Button */}
-              <div className="lg:hidden">
-                <button
-                  type="button"
-                  onClick={() => setMobileView("list")}
-                  className="inline-flex items-center space-x-2 text-xs font-bold text-brand-navy hover:text-brand-red bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>Back to Inquiries List</span>
-                </button>
-              </div>
+          {selectedInquiry ? (() => {
+            const selectedMeta = parseInquiryData(selectedInquiry.message);
+            const waPhone = selectedInquiry.phone ? selectedInquiry.phone.replace(/[^0-9]/g, "") : "";
+            const waDefaultText = encodeURIComponent(
+              selectedMeta.refCode
+                ? `Hello ${selectedInquiry.name}, this is Global Guidelines Consultancy. We have received your uploaded documents under Reference ${selectedMeta.refCode}. Our counseling team has reviewed your file and we would like to guide you on your next steps.`
+                : `Hello ${selectedInquiry.name}, this is Global Guidelines Consultancy following up on your study abroad inquiry.`
+            );
 
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-4">
-                <div>
-                  <h2 className="text-lg font-black text-slate-900">{selectedInquiry.name}</h2>
-                  <div className="text-[11px] text-slate-400">
-                    Received on {formatDate(selectedInquiry.createdAt)}
+            return (
+              <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 shadow-sm space-y-6 lg:sticky lg:top-24">
+                {/* Mobile Back to List Button */}
+                <div className="lg:hidden">
+                  <button
+                    type="button"
+                    onClick={() => setMobileView("list")}
+                    className="inline-flex items-center space-x-2 text-xs font-bold text-brand-navy hover:text-brand-red bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Back to Inquiries List</span>
+                  </button>
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-4">
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <h2 className="text-lg font-black text-slate-900">{selectedInquiry.name}</h2>
+                      {selectedMeta.refCode && (
+                        <span className="font-mono text-xs font-bold text-brand-red bg-red-50 border border-red-200 px-2 py-0.5 rounded-md">
+                          {selectedMeta.refCode}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[11px] text-slate-400">
+                      Received on {formatDate(selectedInquiry.createdAt)}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs font-bold text-slate-500">Status:</span>
+                    <select
+                      value={selectedInquiry.status}
+                      disabled={updatingId === selectedInquiry.id}
+                      onChange={(e) => handleStatusChange(selectedInquiry.id, e.target.value)}
+                      className="text-xs font-bold px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
+                    >
+                      <option value="NEW">NEW</option>
+                      <option value="CONTACTED">CONTACTED</option>
+                      <option value="QUALIFIED">QUALIFIED</option>
+                      <option value="ARCHIVED">ARCHIVED</option>
+                    </select>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-bold text-slate-500">Status:</span>
-                  <select
-                    value={selectedInquiry.status}
-                    disabled={updatingId === selectedInquiry.id}
-                    onChange={(e) => handleStatusChange(selectedInquiry.id, e.target.value)}
-                    className="text-xs font-bold px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
-                  >
-                    <option value="NEW">NEW</option>
-                    <option value="CONTACTED">CONTACTED</option>
-                    <option value="QUALIFIED">QUALIFIED</option>
-                    <option value="ARCHIVED">ARCHIVED</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Contact details */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Email Address</span>
-                  <a
-                    href={`mailto:${selectedInquiry.email}`}
-                    className="font-bold text-brand-navy hover:underline flex items-center space-x-1"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-brand-red" />
-                    <span>{selectedInquiry.email}</span>
-                  </a>
-                </div>
-
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Phone / WhatsApp</span>
-                  {selectedInquiry.phone ? (
+                {/* Contact details */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Email Address</span>
                     <a
-                      href={`https://wa.me/${selectedInquiry.phone.replace(/[^0-9]/g, "")}`}
-                      target="_blank"
-                      className="font-bold text-emerald-700 hover:underline flex items-center space-x-1"
+                      href={`mailto:${selectedInquiry.email}`}
+                      className="font-bold text-brand-navy hover:underline flex items-center space-x-1"
                     >
-                      <Phone className="w-3.5 h-3.5 text-emerald-500" />
-                      <span>{selectedInquiry.phone}</span>
+                      <Mail className="w-3.5 h-3.5 text-brand-red" />
+                      <span>{selectedInquiry.email}</span>
                     </a>
-                  ) : (
-                    <span className="text-slate-400 font-medium">Not provided</span>
+                  </div>
+
+                  <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Phone / WhatsApp</span>
+                    {selectedInquiry.phone ? (
+                      <a
+                        href={`https://wa.me/${waPhone}?text=${waDefaultText}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-bold text-emerald-700 hover:underline flex items-center space-x-1"
+                      >
+                        <Phone className="w-3.5 h-3.5 text-emerald-500" />
+                        <span>{selectedInquiry.phone}</span>
+                      </a>
+                    ) : (
+                      <span className="text-slate-400 font-medium">Not provided</span>
+                    )}
+                  </div>
+                </div>
+
+                {selectedInquiry.serviceOfInterest && (
+                  <div className="bg-red-50/60 p-3 rounded-xl border border-red-100 text-xs">
+                    <span className="font-bold text-brand-red">Target Destination: </span>
+                    <span className="font-semibold text-slate-800">{selectedInquiry.serviceOfInterest}</span>
+                  </div>
+                )}
+
+                {/* Attached Student Documents List */}
+                {selectedMeta.documents && selectedMeta.documents.length > 0 && (
+                  <div className="space-y-3 bg-slate-50/80 p-4 rounded-2xl border border-slate-200">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Paperclip className="w-4 h-4 text-brand-red" />
+                        <span className="text-xs font-bold text-brand-navy">
+                          Uploaded Documents ({selectedMeta.documents.length})
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        Verified Uploads
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      {selectedMeta.documents.map((doc, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-white p-3 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 shadow-xs"
+                        >
+                          <div className="flex items-center space-x-2.5 overflow-hidden">
+                            <FileText className="w-4 h-4 text-brand-red flex-shrink-0" />
+                            <div className="truncate">
+                              <div className="text-xs font-bold text-slate-800 truncate">
+                                {doc.filename}
+                              </div>
+                              <div className="text-[10px] text-slate-400">
+                                <span className="font-semibold text-brand-navy">{doc.docType}</span>
+                                {doc.sizeBytes ? ` • ${(doc.sizeBytes / 1024 / 1024).toFixed(2)} MB` : ""}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                            <a
+                              href={doc.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center space-x-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold px-2.5 py-1.5 rounded-lg transition"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>View</span>
+                            </a>
+                            <a
+                              href={doc.url}
+                              download
+                              className="inline-flex items-center space-x-1 bg-brand-navy hover:bg-brand-navy-900 text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg transition"
+                            >
+                              <Download className="w-3 h-3" />
+                              <span>Save</span>
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-2">
+                  <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                    Student's Academic Background & Message:
+                  </span>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed whitespace-pre-wrap font-sans">
+                    {selectedMeta.cleanMessage}
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <a
+                    href={`mailto:${selectedInquiry.email}?subject=Global Guidelines Counseling Follow-up`}
+                    className="inline-flex items-center space-x-2 bg-brand-navy hover:bg-brand-navy-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Reply via Email</span>
+                  </a>
+
+                  {selectedInquiry.phone && (
+                    <a
+                      href={`https://wa.me/${waPhone}?text=${waDefaultText}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span>Follow-up on WhatsApp</span>
+                    </a>
                   )}
                 </div>
               </div>
-
-              {selectedInquiry.serviceOfInterest && (
-                <div className="bg-red-50/60 p-3 rounded-xl border border-red-100 text-xs">
-                  <span className="font-bold text-brand-red">Target Destination: </span>
-                  <span className="font-semibold text-slate-800">{selectedInquiry.serviceOfInterest}</span>
-                </div>
-              )}
-
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
-                  Student's Academic Background & Message:
-                </span>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed whitespace-pre-wrap font-sans">
-                  {selectedInquiry.message}
-                </div>
-              </div>
-
-              <div className="pt-2 flex items-center gap-3">
-                <a
-                  href={`mailto:${selectedInquiry.email}?subject=Global Guidelines Counseling Follow-up`}
-                  className="inline-flex items-center space-x-2 bg-brand-navy hover:bg-brand-navy-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
-                >
-                  <Mail className="w-4 h-4" />
-                  <span>Reply via Email</span>
-                </a>
-
-                {selectedInquiry.phone && (
-                  <a
-                    href={`https://wa.me/${selectedInquiry.phone.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span>Message on WhatsApp</span>
-                  </a>
-                )}
-              </div>
-            </div>
-          ) : (
+            );
+          })() : (
             <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center text-xs text-slate-400">
               Select an inquiry to view details.
             </div>

@@ -30,7 +30,7 @@ const navItems = [
   { label: "Resources", href: "/dashboard/resources", icon: FolderDown },
   { label: "Testimonials", href: "/dashboard/testimonials", icon: MessageSquareQuote },
   { label: "Team Members", href: "/dashboard/team", icon: Users },
-  { label: "Inquiries & Leads", href: "/dashboard/inquiries", icon: Inbox },
+  { label: "Student Inquiries & Docs", href: "/dashboard/inquiries", icon: Inbox },
   { label: "Media Library", href: "/dashboard/media", icon: ImageIcon },
 ];
 
